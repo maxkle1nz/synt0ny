@@ -73,19 +73,29 @@ o método é o produto tanto quanto os resultados.
   resultado inalterado).
 
 ## Próximos passos (fila real, em ordem)
-0. Exp 11 "o atlas" — FUNDAÇÃO PRONTA (ver atlas/README.md): léxico de 83.918
-   lemas (OWN-PT + TeP 2.0, ambos CC BY-SA), padrão-ouro externo de 1.158
-   antonímias verbais. Falta: desenho + verdict cross-vendor + selo + run.
-   UPGRADE 2026-07-10: Exp 11 será MULTI-INSTRUMENTO — bancada A = M4 Max
-   com bge-m3 (119 p/s); bancada B = GENESIS (RX 7900 24GB/ROCm, Ollama,
-   espaço liberado pelo Max com carta branca) com qwen3-embedding:8b (15×
-   maior). Resultados que sobrevivem a DOIS encoders independentes matam a
-   crítica "um único instrumento" que pesa sobre os Exp 1-10. Trilhas
-   futuras da bancada B (registradas, não prometidas): sparse autoencoders
-   sobre os espectros (features monossemânticas via ROCm/PyTorch),
-   observatório de jobs noturnos (replicações com seeds, varreduras),
-   qwen3:32b local como rotulador auxiliar declarado (sempre validado por
-   amostra humana).
+0. [EXECUTADO 2026-07-10] Exp 11 "o atlas" — 83.917 lemas × 2 encoders
+   (A bge-m3/M4, B qwen3-embedding:8b/GENESIS RX 7900), panel duplo no
+   desenho (fable + fugu, ambos CHANGE aplicados). PLACAR:
+   · E1 gate (v12 >= 0,75): FALHOU em A (0,685) e B (0,678) → "não
+     estabelecido". DESCOBERTA REPLICADA: eixo v_tep (12 relações held-out
+     do padrão-ouro) fez 0,791/0,799 — cruza o limiar NOS DOIS. O eixo
+     autoral está aposentado; v_tep é o herdeiro (exige pré-registro novo).
+   · E3 (Q × polissemia): sinais OPOSTOS entre encoders (+0,064 A /
+     −0,087 B) → ARTEFATO DE INSTRUMENTO, não geometria da língua. A
+     "refutação limpa" do interim (só A) estava ERRADA — o multi-instrumento
+     corrigiu o próprio laboratório em tempo real.
+   · E2: replicou raspando nos dois (0,312/0,377 vs p95); expoentes
+     0,67/0,83. Osgood CAIU nos dois: modos de topo do léxico cru =
+     registro/morfologia/enciclopédia ("des-", nomes próprios, jargão).
+     O dicionário cru tem geometria EDITORIAL.
+   · Concordância inter-encoder: Q 0,21 (baixa!) · proj(v12) 0,52 — os
+     encoders são menos redundantes que o risco fable temia; onde concordam,
+     vale mais.
+   Trilhas futuras bancada B (registradas): SAEs sobre espectros,
+   observatório noturno, qwen3:32b rotulador auxiliar validado por amostra.
+0b. Exp 12 candidato: o atlas FILTRADO (vocabulário comum, 1 palavra, fr>0)
+   + régua-por-par + v_tep como eixo primário — reperguntar Osgood e E1
+   na parte da língua que não é editorial.
 1. Validação do espectrômetro em DADOS REAIS (reviews/commits/tickets de
    verdade — o 100% é de frases autorais limpas; produção tem ruído).
 2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador
