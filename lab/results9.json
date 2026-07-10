@@ -1,0 +1,13 @@
+{
+ "resolution": 0.43550025929842356,
+ "unstable": 0,
+ "ida": 4,
+ "volta": 3,
+ "total": 7,
+ "null_p95": 3.0,
+ "null_mean": 2.27,
+ "b_ida": 1,
+ "b_volta": 1,
+ "decoy": 2,
+ "irregular_hits": 0
+}

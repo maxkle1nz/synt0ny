@@ -20,6 +20,15 @@ o método é o produto tanto quanto os resultados.
 - Refutados: transmutação linear entre corpos distintos (espelhar amar ≠
   odiar); "uma frequência por palavra" (PCA-1: 0% de recuperação); dissonância
   física de antônimos.
+- Exp 9 (paradigma dos irmãos, desenho fable + verdict fugu CHANGE aplicado):
+  transmutação FALHOU até com corpo idêntico (ida 4/12, volta 3/12 vs gate 9;
+  supletivos 0/4 → o sinal fraco que existe é geometria de sufixo). Mas o
+  vetor-tempo carrega sinal real (7/24 vs null p95 = 3). CONCLUSÃO DA TRILOGIA
+  (Exp 5, 6, 9): neste espaço, atributos são LEGÍVEIS (projeção classifica
+  12/12) mas não ESCREVÍVEIS (aritmética vetorial não edita palavras) — painel
+  de MOSTRADORES, não de botões. Observação qualitativa não-gate: futuro −
+  v_tempo caiu 6/12 vezes no condicional (futuro do pretérito) — erro
+  sistemático gramaticalmente coerente; hipótese para investigação futura.
 - Ferramenta `sintonia.py` funcionando (buscar/intencao/eixo, zero-shot);
   caderno publicado como artifact (`caderno.html`).
 
@@ -34,7 +43,13 @@ o método é o produto tanto quanto os resultados.
    gate-teto invencível. Lição medida, não opinião.
 4. Apostas do agente registradas por experimento. Viés conhecido e reincidente:
    acerta a EXISTÊNCIA de eixos, superestima magnitudes e saltos (4 derrotas
-   nos antônimos + Exp 8). Calibrar apostas futuras para baixo.
+   nos antônimos + Exp 8). No Exp 9 a calibração "para baixo" AINDA superestimou
+   (apostou 8-7-3-1, veio 4-3-2-0): calibrar operações de ESCRITA perto do null,
+   não perto da vontade.
+5. Verdict cross-vendor antes do selo endurece o teste: o CHANGE do fugu no
+   Exp 9 (null empírico de 300 direções, falsificador supletivo, margem por
+   item) foi o que permitiu separar "sinal real fraco" de "transmutação" — sem
+   ele, 7/24 contra um v_rand único teria dado leitura confusa.
 5. Demos não são gates: indício vai para o caderno como indício.
 
 ## Problemas conhecidos
@@ -44,19 +59,17 @@ o método é o produto tanto quanto os resultados.
   régua-por-par entrar.
 - Eixo da intenção zero-shot: forte no polo ⊖, morno no ⊕ (medido na CLI).
 - Escala: tudo validado em 227 verbos pt; substantivos/frases = extrapolação.
-- Voz fugu (Sakana) indisponível via codex exec: MCP do DEXT3R morto derruba o
-  startup (`~/.codex/config.toml:406`, porta 9200). Fix: comentar a entrada ou
-  subir o serviço.
+- Voz fugu (Sakana): o MCP do DEXT3R morto (`~/.codex/config.toml:406`, porta
+  9200) derruba o startup — FIX PROVADO (Exp 9): `codex exec -c
+  'mcp_servers={}'` anula sem tocar no config; WAF exige VPN ligada.
 
 ## Próximos passos (fila real, em ordem)
-1. "Paradigma dos irmãos" (proposta fable, panel de 2026-07-10): 5 formas por
-   verbo, transplante de tempo julgado entre irmãos (chance 25%), decoy
-   morfológico interno (amaria vs amarei). Predições já esboçadas no panel.
-2. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
+1. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
    similaridade purificada — substitui a purificação vetorial sem mutilar.
-3. Exp 9 candidato: "dicionário vs diário" — frames de Fillmore mensuráveis
-   (verbo ressoa com seus papéis típicos?) vs conhecimento episódico (ausente
-   por construção).
+2. "Dicionário vs diário" — frames de Fillmore mensuráveis (verbo ressoa com
+   seus papéis típicos?) vs conhecimento episódico (ausente por construção).
+3. Hipótese nova do Exp 9 (não-gate): futuro − v_tempo → condicional (futuro
+   do pretérito) — o erro sistemático merece teste próprio.
 4. Auto-refresh do PATHOS (padrão git-cliff): opcional aqui — repo sem CI;
    instalar se o repo ganhar cadência.
 
