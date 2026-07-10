@@ -96,8 +96,14 @@ o método é o produto tanto quanto os resultados.
 0b. Exp 12 candidato: o atlas FILTRADO (vocabulário comum, 1 palavra, fr>0)
    + régua-por-par + v_tep como eixo primário — reperguntar Osgood e E1
    na parte da língua que não é editorial.
-1. Validação do espectrômetro em DADOS REAIS (reviews/commits/tickets de
-   verdade — o 100% é de frases autorais limpas; produção tem ruído).
+1. [EXECUTADO 2026-07-11] Exp 12 "a rua": espectrômetro validado em PRODUÇÃO
+   — 500 reviews reais (B2W, ground truth = estrelas dos clientes): 93,2%
+   zero-shot, AUC 0,979 (gate 80%, null matched p95 81,2%). Os 34 erros são
+   a bula prevista: ironia, mistas (produto 5★/entrega péssima), notas sem
+   valência. VEREDITO DE UTILIDADE: triagem de valência pt local/grátis/
+   determinística é caso de uso REAL comprovado. Ressalvas declaradas:
+   estratos subestimados por mediana local; bugfix de broadcasting pós-selo
+   (sem mudança de métrica).
 2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador
    (valência do evento vs tipo lexical) com poder estatístico.
 3. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
