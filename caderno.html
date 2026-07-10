@@ -1,0 +1,239 @@
+<title>Sintonia — caderno de uma madrugada</title>
+<style>
+:root{
+  --ground:#F6F7F5; --ink:#1C2433; --muted:#5C6675; --accent:#44518A;
+  --ok:#177A5B; --fail:#B4502A; --open:#77808E; --line:#D9DDD6; --card:#FFFFFF;
+  --okbg:#E3F1EB; --failbg:#F7E8E0; --openbg:#ECEEF0;
+}
+@media (prefers-color-scheme: dark){:root{
+  --ground:#101520; --ink:#DEE4EE; --muted:#8C96A8; --accent:#98A6E0;
+  --ok:#63C9A4; --fail:#EE9C7C; --open:#99A2B0; --line:#232B3B; --card:#161C2A;
+  --okbg:#14261F; --failbg:#2A1C14; --openbg:#1B212D;
+}}
+:root[data-theme="dark"]{
+  --ground:#101520; --ink:#DEE4EE; --muted:#8C96A8; --accent:#98A6E0;
+  --ok:#63C9A4; --fail:#EE9C7C; --open:#99A2B0; --line:#232B3B; --card:#161C2A;
+  --okbg:#14261F; --failbg:#2A1C14; --openbg:#1B212D;
+}
+:root[data-theme="light"]{
+  --ground:#F6F7F5; --ink:#1C2433; --muted:#5C6675; --accent:#44518A;
+  --ok:#177A5B; --fail:#B4502A; --open:#77808E; --line:#D9DDD6; --card:#FFFFFF;
+  --okbg:#E3F1EB; --failbg:#F7E8E0; --openbg:#ECEEF0;
+}
+body{background:var(--ground); color:var(--ink);
+  font-family:"Iowan Old Style",Palatino,"Palatino Linotype",Georgia,serif;
+  line-height:1.65; margin:0;}
+.wrap{max-width:46rem; margin:0 auto; padding:4rem 1.4rem 5rem;}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;}
+.eyebrow{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:.72rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent);}
+h1{font-size:2.15rem; line-height:1.2; font-weight:500; margin:.5rem 0 0;
+  text-wrap:balance;}
+h2{font-size:1.3rem; font-weight:500; margin:0 0 .6rem; text-wrap:balance;}
+p{margin:.85rem 0;}
+.lede{font-size:1.12rem; color:var(--muted); font-style:italic; margin-top:.9rem;}
+.stats{color:var(--muted); font-size:.8rem; margin-top:1.6rem;}
+section{border-top:1px solid var(--line); margin-top:2.6rem; padding-top:2rem;}
+.chip{display:inline-block; font-family:ui-monospace,"SF Mono",Menlo,monospace;
+  font-size:.68rem; letter-spacing:.08em; padding:.14rem .55rem;
+  border-radius:99px; vertical-align:2px; margin-left:.5rem;}
+.ok{color:var(--ok); background:var(--okbg);}
+.fail{color:var(--fail); background:var(--failbg);}
+.open{color:var(--open); background:var(--openbg);}
+.placar{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:.8rem;
+  background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:.8rem 1rem; margin:1rem 0; overflow-x:auto;}
+.placar div{display:flex; justify-content:space-between; gap:2rem;
+  padding:.18rem 0; white-space:nowrap;}
+.placar span:first-child{color:var(--muted);}
+.tri{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:1rem; margin-top:1.2rem;}
+.tri>div{background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:1rem 1.1rem;}
+.tri h3{font-size:.72rem; font-family:ui-monospace,"SF Mono",Menlo,monospace;
+  letter-spacing:.12em; text-transform:uppercase; margin:0 0 .5rem;}
+.tri ul{margin:0; padding-left:1.05rem; font-size:.88rem;}
+.tri li{margin:.35rem 0;}
+.hash{font-size:.68rem; color:var(--muted); line-height:1.9;
+  overflow-x:auto; white-space:nowrap;}
+code{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:.85em;
+  background:var(--card); border:1px solid var(--line); border-radius:4px;
+  padding:.08em .35em;}
+.fecho{font-style:italic; color:var(--muted);}
+em{color:var(--accent); font-style:italic;}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">caderno de laboratório · 2026-07-10 · madrugada → manhã</div>
+  <h1>Atributos são direções; identidades são regiões.</h1>
+  <p class="lede">Uma conversa que começou em "o que é uma matriz?" e terminou
+  medindo a geometria do significado — com pré-registro, controles, um oráculo
+  adversarial e todas as falhas dentro.</p>
+  <p class="stats mono">227 verbos · 2 modelos locais · 1 gerador quântico ·
+  9 pré-registros selados · 7 experimentos · 13 hashes</p>
+</header>
+
+<section>
+  <div class="eyebrow">prelúdio · 03h50 · o teste da intenção física</div>
+  <h2>1024 colapsos quânticos ignoram a intenção<span class="chip ok">H0 segura</span></h2>
+  <p>Antes do significado, o físico: um gerador quântico real (flutuações do
+  vácuo, ANU) decidiu 1024 colapsos enquanto o operador intencionava "sofá" em
+  blocos cegos alternados. Resultado: intenção 47,9% × controle 49,4% —
+  p&nbsp;=&nbsp;0,62, direção oposta ao alvo. A intenção não move fótons. Mas o
+  primeiro número quântico da sessão, fora do dataset, colapsou a frase-símbolo
+  da noite: <em>o gato subiu no colo</em>.</p>
+</section>
+
+<section>
+  <div class="eyebrow">exp 1–2 · o instrumento surdo</div>
+  <h2>Palavra isolada vibra em letras, não em sentido<span class="chip fail">falhou</span></h2>
+  <p>Com um modelo pequeno (nomic-embed-text), sinônimos não ressoaram
+  (d&nbsp;=&nbsp;0,09) — mas <em>casar/caçar</em> ressoou forte
+  (d&nbsp;=&nbsp;2,05): o espectro media ortografia. A emenda contextual criou
+  teto de similaridade (0,84) e "amar" seguiu achando "amarrar". A regra de
+  parada pré-registrada encerrou a linha. O que sobreviveu: determinismo
+  absoluto (Δ&nbsp;=&nbsp;0,0) e busca em 3&nbsp;µs — 6.012× a varredura serial.</p>
+  <div class="placar">
+    <div><span>sinônimos vs aleatórios</span><span>d = 0,09 · p = 0,36</span></div>
+    <div><span>parônimos (forma)</span><span>d = 2,05 — dominava tudo</span></div>
+    <div><span>mecânica (determinismo · matmul)</span><span>Δ = 0,0 · 3 µs ✓</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">exp 3 · o instrumento à altura</div>
+  <h2>Com bge-m3, a ressonância semântica acorda<span class="chip ok">3 de 4 gates</span></h2>
+  <p>Mesmo protocolo, modelo maior: sinônimos separam com d&nbsp;=&nbsp;2,38
+  (p&nbsp;=&nbsp;10⁻⁴) e a busca recupera o sinônimo no top-5 em 61,9% das
+  consultas — contra 0% da semelhança de letras e 2,2% do acaso. Comprimido na
+  melhor frequência única possível (PCA-1), tudo desaba a 0%: <em>não era uma
+  frequência, era um acorde</em>. Mas a forma ainda vazava (parônimos
+  d&nbsp;=&nbsp;2,72) e os antônimos deram R&nbsp;=&nbsp;0,56 — presos entre
+  os cortes selados de 0,25 e 0,60.</p>
+  <div class="placar">
+    <div><span>separação de sinônimos</span><span>d = 2,38 · p = 10⁻⁴ ✓</span></div>
+    <div><span>recuperação top-5</span><span>61,9% (forma 0% · acaso 2,2%) ✓</span></div>
+    <div><span>uma frequência basta?</span><span>PCA-1: 0% — refutado ✓</span></div>
+    <div><span>espectro ignora a forma?</span><span>d = 2,72 ✗</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">exp 4 · o firmamento</div>
+  <h2>Um terço do acorde era letras — e é separável<span class="chip ok">3 gates</span><span class="chip open">R aberto</span></h2>
+  <p>A hipótese da Gênese: separações explícitas de domínio purificam o
+  espectro. Regredindo os espectros sobre 50 eixos de trigrama: 31,4% da
+  variância era forma. Removida, os parônimos calaram (d 3,74&nbsp;→&nbsp;−1,85),
+  o sentido sobreviveu (59,5%) e "comprar" passou a ressoar com
+  <em>adquirir, vender, guardar, economizar</em> — o reino do dinheiro limpo. Os
+  antônimos desceram (R 0,52&nbsp;→&nbsp;0,38): parte da "afinação" era textura.</p>
+  <div class="placar">
+    <div><span>variância explicada pela forma</span><span>31,4% (k=50)</span></div>
+    <div><span>parônimos após separar</span><span>d = 3,74 → −1,85 ✓</span></div>
+    <div><span>sentido sobrevive</span><span>66,7% → 59,5% ✓</span></div>
+    <div><span>antônimos (cortes 0,25/0,60)</span><span>R = 0,38 — aberto</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">exp 5 · a reflexão hermética</div>
+  <h2>A intenção existe. A transmutação, não.<span class="chip ok">eixo 12/12</span><span class="chip fail">espelho</span></h2>
+  <p>"Amar e odiar são a mesma coisa; muda a intenção." Metade confirmada com
+  força: uma única direção, aprendida com 11 pares e testada no 12º, separa
+  positivo de negativo <em>12 vezes em 12</em> (aleatório: 1/12), atravessando
+  domínios espaciais, afetivos e existenciais. Os extremos falam por si:
+  <em>ganhar, construir, receber</em> num polo; <em>destruir, perder,
+  esvaziar</em> no outro. Metade refutada: espelhar "amar" pelo plano da
+  intenção não fabrica "odiar" (top-5 em 8/24; cos(amar,&nbsp;odiar)&nbsp;≈&nbsp;0
+  — ortogonais). Antônimos dividem um eixo e são estranhos no resto: <em>como</em>
+  em cima, não <em>igual</em> a embaixo.</p>
+  <div class="placar">
+    <div><span>direção da intenção (LOO)</span><span>12/12 · aleatório 1/12 ✓</span></div>
+    <div><span>reflexão → antônimo</span><span>8/24 top-5 · rank 21→20 ✗</span></div>
+    <div><span>cos(amar, odiar) purificado</span><span>−0,07 — perpendiculares</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">exp 6 · chronos</div>
+  <h2>O tempo é o segundo botão — ortogonal ao primeiro<span class="chip ok">eixo + ⊥</span><span class="chip fail">gate</span><span class="chip open">demos</span></h2>
+  <p>Pares passado/futuro (amei/amarei… fui/irei): a direção do tempo
+  generaliza (12/12 e 11/12 no LOO — inclusive separando <em>fui</em> de
+  <em>irei</em>, zero letras em comum). E a jóia: cos(v_tempo,&nbsp;v_intenção)
+  =&nbsp;−0,01 — dois eixos extraídos de pares diferentes, perpendiculares com
+  precisão de três casas. O gate do transplante morreu duas vezes: por teto no
+  espaço com forma (amei/amarei já eram rank 2) e por lesão no purificado (a
+  faca linear decepa o corpo compartilhado junto com a forma — baseline 238).
+  Os demos contam o resto: <em>amei + futuro → amarei</em> em 1º;
+  <em>fui + futuro → irei</em> em 3º, atravessando um supletivo total.</p>
+  <div class="placar">
+    <div><span>direção do tempo (LOO)</span><span>12/12 · 11/12 ✓</span></div>
+    <div><span>ortogonalidade tempo ⊥ intenção</span><span>cos = −0,01 ✓</span></div>
+    <div><span>transplante formal</span><span>teto + lesão ✗ (gate mal calibrado)</span></div>
+    <div><span>demo (não-gate)</span><span>amei→amarei nº1 · fui→irei nº3</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">balanço</div>
+  <h2>O que ficou na mesa</h2>
+  <div class="tri">
+    <div><h3 style="color:var(--ok)">medido</h3><ul>
+      <li>31,4% do espectro é forma — e sai com uma regressão</li>
+      <li>eixo da intenção: 1 direção, 12/12, universal entre domínios</li>
+      <li>eixo do tempo ⊥ eixo da intenção (cos −0,01)</li>
+      <li>busca semântica determinística em µs (matmul)</li>
+    </ul></div>
+    <div><h3 style="color:var(--fail)">refutado</h3><ul>
+      <li>intenção movendo colapsos físicos (p = 0,62)</li>
+      <li>dissonância física de antônimos (nunca ficam com os aleatórios)</li>
+      <li>transmutação literal (espelhar amar ≠ odiar)</li>
+      <li>"uma frequência por palavra" (PCA-1: 0%)</li>
+    </ul></div>
+    <div><h3 style="color:var(--open)">limites do bisturi</h3><ul>
+      <li>purificação linear mutila parentes legítimos (flexões)</li>
+      <li>gates sem oráculo saem mal calibrados (teto do Exp 6)</li>
+      <li>o apostador acerta eixos e erra saltos — viés medido</li>
+    </ul></div>
+  </div>
+  <p style="margin-top:1.4rem">A síntese que os sete placares desenham: o
+  significado é um <em>painel de botões sobre indivíduos</em>. Atributos
+  (intenção, tempo) são direções reais, ortogonais, operáveis. Identidades
+  (amar, odiar) são regiões com corpo próprio, que nenhuma operação linear
+  atravessa. E as tradições que guiaram a noite — o Om, a Gênese, Hermes —
+  seguiram todas o mesmo destino experimental: <em>a estrutura sobreviveu, a
+  ontologia caiu</em>. Escalas aninhadas existem; vibração literal, não.
+  Camadas separáveis existem; taxonomia imposta, não. A intenção existe, com
+  coordenadas; a transmutação literal, não. Geometria boa viaja milênios,
+  mesmo embrulhada em vocabulário de época.</p>
+</section>
+
+<section>
+  <div class="eyebrow">ferramenta</div>
+  <h2>sintonia — a consolidação executável</h2>
+  <p>Em <code>~/sintonia</code>: busca por ressonância no espaço purificado e
+  leitura do eixo da intenção, zero-shot para qualquer verbo
+  (<code>sintonia.py buscar</code> · <code>intencao</code> · <code>eixo</code>).
+  Primeira medição fora do laboratório: <em>sabotar</em> caiu no percentil 6 do
+  eixo; <em>apodrecer</em> no 12. O caderno bruto — pré-registros, scripts,
+  resultados — vive em <code>~/sintonia/lab/</code>.</p>
+</section>
+
+<section>
+  <div class="eyebrow">auditoria</div>
+  <h2>Selos (SHA-256, antes de cada coleta)</h2>
+  <div class="hash mono">
+  e67e2b48… PREREGISTRO (QRNG) · 5141206d… PREREGISTRO (Exp 1) ·
+  e16504fa… dataset.json · f8104bd7… resonance.py<br>
+  09092595… EXP2 · 211fe88a… exp2.py · 58e8e3af… EXP3 · 84f22c3a… exp3_run.py<br>
+  6b025d70… EXP4 · f05bd887… exp4.py · f16b88ec… EXP5 · 0dd51e02… exp5.py<br>
+  8c08499f… EXP6 · 0709a893… exp6.py
+  </div>
+  <p class="fecho" style="margin-top:2rem">Instrumentos: nomic-embed-text e
+  bge-m3 (Ollama, local) · QRNG da ANU · veredito adversarial askGOD no desenho
+  do Exp 1. As falhas fazem parte do caderno por construção: são elas que dão
+  valor aos acertos. Começou com "o que é uma matriz?"; terminou com a intenção
+  tendo coordenadas.</p>
+</section>
+</div>

@@ -1,0 +1,49 @@
+{
+  "syn_distinct": [
+    ["olhar", "observar"], ["morrer", "falecer"], ["começar", "iniciar"],
+    ["acabar", "terminar"], ["achar", "encontrar"], ["falar", "dizer"],
+    ["andar", "caminhar"], ["voltar", "retornar"], ["largar", "abandonar"],
+    ["pegar", "agarrar"], ["querer", "desejar"], ["precisar", "necessitar"],
+    ["mandar", "enviar"], ["ajudar", "auxiliar"], ["mostrar", "exibir"],
+    ["lembrar", "recordar"], ["escolher", "selecionar"], ["juntar", "reunir"],
+    ["comprar", "adquirir"], ["entender", "compreender"], ["esperar", "aguardar"]
+  ],
+  "syn_shared": [
+    ["mostrar", "demonstrar"], ["juntar", "ajuntar"], ["sentar", "assentar"],
+    ["provar", "comprovar"], ["guardar", "resguardar"], ["unir", "reunir"]
+  ],
+  "antonyms": [
+    ["subir", "descer"], ["abrir", "fechar"], ["entrar", "sair"],
+    ["comprar", "vender"], ["ganhar", "perder"], ["amar", "odiar"],
+    ["nascer", "morrer"], ["chegar", "partir"], ["ligar", "desligar"],
+    ["aceitar", "recusar"], ["lembrar", "esquecer"], ["construir", "destruir"]
+  ],
+  "paronyms": [
+    ["casar", "caçar"], ["prever", "prover"], ["deferir", "diferir"],
+    ["infligir", "infringir"], ["ratificar", "retificar"], ["emergir", "imergir"],
+    ["absolver", "absorver"], ["aprender", "apreender"], ["acender", "ascender"],
+    ["cumprir", "cumprimentar"]
+  ],
+  "polysemous": ["ficar", "dar", "pegar", "ter", "fazer", "passar", "tomar", "deixar"],
+  "specific": ["fotografar", "amamentar", "soldar", "tricotar", "vacinar", "pedalar", "datilografar", "esquiar"],
+  "distractors": [
+    "correr", "saltar", "pular", "comer", "beber", "dormir", "sonhar", "acordar",
+    "trabalhar", "estudar", "ler", "escrever", "cantar", "dançar", "pintar",
+    "desenhar", "dirigir", "viajar", "nadar", "voar", "cair", "levantar",
+    "gritar", "sussurrar", "chorar", "sorrir", "rir", "brincar", "jogar",
+    "apostar", "vencer", "empatar", "treinar", "ensinar", "pensar", "imaginar",
+    "criar", "inventar", "quebrar", "consertar", "limpar", "sujar", "lavar",
+    "secar", "cortar", "colar", "dobrar", "esticar", "empurrar", "puxar",
+    "atirar", "defender", "atacar", "fugir", "perseguir", "esconder", "revelar",
+    "prometer", "mentir", "enganar", "confiar", "duvidar", "acreditar", "negar",
+    "admitir", "culpar", "perdoar", "agradecer", "convidar", "visitar",
+    "receber", "oferecer", "emprestar", "devolver", "pagar", "cobrar",
+    "economizar", "gastar", "investir", "medir", "pesar", "contar", "calcular",
+    "somar", "dividir", "multiplicar", "subtrair", "misturar", "separar",
+    "organizar", "planejar", "decidir", "mudar", "permanecer", "continuar",
+    "parar", "acelerar", "frear", "girar", "amarrar", "soltar", "apertar",
+    "encher", "esvaziar", "carregar", "plantar", "colher", "regar", "varrer",
+    "cozinhar", "assar", "fritar", "engolir", "mastigar", "respirar", "tossir",
+    "espirrar", "vestir", "calçar", "pentear"
+  ]
+}

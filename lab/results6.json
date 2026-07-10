@@ -1,0 +1,366 @@
+{
+ "centrado": {
+  "acc": 12,
+  "acc_rand": 5,
+  "top5": 23,
+  "top5_rand": 20,
+  "melhora": 15,
+  "melhora_rand": 4,
+  "med_antes": 2.0,
+  "med_depois": 1.0,
+  "med_rand": 2.0,
+  "cos_tempo_int": -0.007750832664875262,
+  "rows": [
+   {
+    "par": "amei\u2192amarei",
+    "irreg": false,
+    "antes": 1,
+    "depois": 1,
+    "rand": 1
+   },
+   {
+    "par": "amarei\u2192amei",
+    "irreg": false,
+    "antes": 1,
+    "depois": 1,
+    "rand": 1
+   },
+   {
+    "par": "comprei\u2192comprarei",
+    "irreg": false,
+    "antes": 1,
+    "depois": 1,
+    "rand": 1
+   },
+   {
+    "par": "comprarei\u2192comprei",
+    "irreg": false,
+    "antes": 3,
+    "depois": 2,
+    "rand": 2
+   },
+   {
+    "par": "ganhei\u2192ganharei",
+    "irreg": false,
+    "antes": 1,
+    "depois": 1,
+    "rand": 1
+   },
+   {
+    "par": "ganharei\u2192ganhei",
+    "irreg": false,
+    "antes": 8,
+    "depois": 2,
+    "rand": 7
+   },
+   {
+    "par": "vendi\u2192venderei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "venderei\u2192vendi",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 3
+   },
+   {
+    "par": "comi\u2192comerei",
+    "irreg": false,
+    "antes": 5,
+    "depois": 1,
+    "rand": 5
+   },
+   {
+    "par": "comerei\u2192comi",
+    "irreg": false,
+    "antes": 15,
+    "depois": 4,
+    "rand": 13
+   },
+   {
+    "par": "escrevi\u2192escreverei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "escreverei\u2192escrevi",
+    "irreg": false,
+    "antes": 6,
+    "depois": 2,
+    "rand": 7
+   },
+   {
+    "par": "perdi\u2192perderei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "perderei\u2192perdi",
+    "irreg": false,
+    "antes": 2,
+    "depois": 2,
+    "rand": 2
+   },
+   {
+    "par": "subi\u2192subirei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "subirei\u2192subi",
+    "irreg": false,
+    "antes": 2,
+    "depois": 2,
+    "rand": 2
+   },
+   {
+    "par": "abri\u2192abrirei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "abrirei\u2192abri",
+    "irreg": false,
+    "antes": 6,
+    "depois": 3,
+    "rand": 5
+   },
+   {
+    "par": "dormi\u2192dormirei",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "dormirei\u2192dormi",
+    "irreg": false,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "fiz\u2192farei",
+    "irreg": true,
+    "antes": 2,
+    "depois": 1,
+    "rand": 2
+   },
+   {
+    "par": "farei\u2192fiz",
+    "irreg": true,
+    "antes": 3,
+    "depois": 5,
+    "rand": 3
+   },
+   {
+    "par": "fui\u2192irei",
+    "irreg": true,
+    "antes": 6,
+    "depois": 6,
+    "rand": 6
+   },
+   {
+    "par": "irei\u2192fui",
+    "irreg": true,
+    "antes": 3,
+    "depois": 3,
+    "rand": 3
+   }
+  ]
+ },
+ "purificado": {
+  "acc": 11,
+  "acc_rand": 6,
+  "top5": 1,
+  "top5_rand": 2,
+  "melhora": 12,
+  "melhora_rand": 6,
+  "med_antes": 238.5,
+  "med_depois": 216.0,
+  "med_rand": 239.0,
+  "cos_tempo_int": -0.01559428266311366,
+  "rows": [
+   {
+    "par": "amei\u2192amarei",
+    "irreg": false,
+    "antes": 198,
+    "depois": 243,
+    "rand": 206
+   },
+   {
+    "par": "amarei\u2192amei",
+    "irreg": false,
+    "antes": 212,
+    "depois": 22,
+    "rand": 198
+   },
+   {
+    "par": "comprei\u2192comprarei",
+    "irreg": false,
+    "antes": 238,
+    "depois": 167,
+    "rand": 227
+   },
+   {
+    "par": "comprarei\u2192comprei",
+    "irreg": false,
+    "antes": 235,
+    "depois": 113,
+    "rand": 236
+   },
+   {
+    "par": "ganhei\u2192ganharei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 249,
+    "rand": 249
+   },
+   {
+    "par": "ganharei\u2192ganhei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "vendi\u2192venderei",
+    "irreg": false,
+    "antes": 247,
+    "depois": 233,
+    "rand": 248
+   },
+   {
+    "par": "venderei\u2192vendi",
+    "irreg": false,
+    "antes": 239,
+    "depois": 103,
+    "rand": 242
+   },
+   {
+    "par": "comi\u2192comerei",
+    "irreg": false,
+    "antes": 200,
+    "depois": 202,
+    "rand": 171
+   },
+   {
+    "par": "comerei\u2192comi",
+    "irreg": false,
+    "antes": 191,
+    "depois": 17,
+    "rand": 203
+   },
+   {
+    "par": "escrevi\u2192escreverei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "escreverei\u2192escrevi",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "perdi\u2192perderei",
+    "irreg": false,
+    "antes": 177,
+    "depois": 189,
+    "rand": 177
+   },
+   {
+    "par": "perderei\u2192perdi",
+    "irreg": false,
+    "antes": 169,
+    "depois": 8,
+    "rand": 190
+   },
+   {
+    "par": "subi\u2192subirei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "subirei\u2192subi",
+    "irreg": false,
+    "antes": 250,
+    "depois": 230,
+    "rand": 249
+   },
+   {
+    "par": "abri\u2192abrirei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 247,
+    "rand": 250
+   },
+   {
+    "par": "abrirei\u2192abri",
+    "irreg": false,
+    "antes": 250,
+    "depois": 241,
+    "rand": 250
+   },
+   {
+    "par": "dormi\u2192dormirei",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "dormirei\u2192dormi",
+    "irreg": false,
+    "antes": 250,
+    "depois": 250,
+    "rand": 250
+   },
+   {
+    "par": "fiz\u2192farei",
+    "irreg": true,
+    "antes": 2,
+    "depois": 65,
+    "rand": 2
+   },
+   {
+    "par": "farei\u2192fiz",
+    "irreg": true,
+    "antes": 4,
+    "depois": 6,
+    "rand": 2
+   },
+   {
+    "par": "fui\u2192irei",
+    "irreg": true,
+    "antes": 12,
+    "depois": 184,
+    "rand": 17
+   },
+   {
+    "par": "irei\u2192fui",
+    "irreg": true,
+    "antes": 7,
+    "depois": 4,
+    "rand": 8
+   }
+  ]
+ }
+}

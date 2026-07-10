@@ -1,0 +1,66 @@
+{
+ "centrado": {
+  "acc_pol": 12,
+  "acc_rnd": 1,
+  "med_before": 7.0,
+  "med_pol": 3.5,
+  "med_rnd": 7.0,
+  "top5": 14,
+  "axis_pos": [
+   "ganhar",
+   "chegar",
+   "entrar",
+   "construir",
+   "adquirir",
+   "receber",
+   "comprar",
+   "acreditar",
+   "subir",
+   "lembrar"
+  ],
+  "axis_neg": [
+   "desligar",
+   "destruir",
+   "descer",
+   "subtrair",
+   "esvaziar",
+   "recusar",
+   "odiar",
+   "devolver",
+   "perder",
+   "deixar"
+  ]
+ },
+ "purificado": {
+  "acc_pol": 12,
+  "acc_rnd": 1,
+  "med_before": 21.0,
+  "med_pol": 19.5,
+  "med_rnd": 20.5,
+  "top5": 8,
+  "axis_pos": [
+   "subir",
+   "construir",
+   "ganhar",
+   "lembrar",
+   "ligar",
+   "desejar",
+   "observar",
+   "selecionar",
+   "nascer",
+   "receber"
+  ],
+  "axis_neg": [
+   "destruir",
+   "recusar",
+   "fechar",
+   "odiar",
+   "acabar",
+   "subtrair",
+   "negar",
+   "quebrar",
+   "esquecer",
+   "esvaziar"
+  ]
+ }
+}
