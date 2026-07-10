@@ -83,8 +83,11 @@ stateDiagram-v2
     Proposta --> Selada: pré-registro + SHA-256\nANTES de qualquer dado
     Selada --> Calibrada: laudo passa\n(LOO · null-300 · sensibilidades)
     Selada --> Refutada: laudo falha\n(registrada, nunca apagada)
-    Calibrada --> EmPainel: consumida advisory\n(bula pública anexa)
-    EmPainel --> Recalibrada: drift/idioma/domínio novo\n→ re-selo obrigatório
+    Calibrada --> EmObservação: shadow mode\n(pontua, não é exibida)
+    EmObservação --> EmPainel: auditoria da sombra passa\n(precision em dados reais)
+    EmPainel --> Suspensa: drift, troca de encoder\nou degradação em replay
+    Suspensa --> Recalibrada: re-selo obrigatório\n(continua auditável, não lê)
+    EmPainel --> Recalibrada: idioma/domínio novo\n→ re-selo obrigatório
     EmPainel --> Aposentada: herdeiro melhor replicado\n(ex.: v12 → v_tep, Exp 11)
     Refutada --> [*]
     Aposentada --> [*]: permanece auditável\n(hash + laudo no lab/)

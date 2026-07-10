@@ -1,4 +1,7 @@
-# PRD — sintonia: motor local de discernimento
+# PRD — sintonia: motor local de discernimento (advisory)
+Nome externo qualificado por review (2026-07-11): "instrumentação semântica
+local" / "semantic instrumentation engine" — o qualificador é parte do nome
+para o nome não induzir o overclaiming que o produto combate.
 2026-07-11 · Autoria: assento Fable (main da sessão fundadora) · Fundamento:
 12 experimentos pré-registrados (lab/), validação de rua (Exp 12), conselho
 de 4 vozes (docs/FRONTEIRA-M1ND.md). Verdade viva operacional: PATHOS.md.
@@ -58,10 +61,24 @@ aplica; RF5 modo advisory-only: toda saída é score+rider, nunca ação; RF6
 CLI (existente: sintonia.py buscar/intencao/eixo) e biblioteca importável;
 RF7 replay offline sobre históricos (jsonl/csv) para calibração e auditoria;
 RF8 versionamento de réguas (axis_id + versão + hash do laudo).
+RF9 purification_policy explícita por leitura (disabled | natural_language |
+explicit; limiares de densidade de identificadores; mixed_content → ABSTAIN)
+— saída declara status e razão da abstenção: o mostrador não inventa onde
+não vale; RF10 measurement envelope com governança no wire format
+(axis_id+versão, score, percentil, riders CODIFICADOS com severidade,
+allowed_actions/forbidden_actions, max_effect) — v0 mínimo no T0, v1 com
+proveniência completa (input_hash, weights_hash, report_hash,
+in_distribution) no T2.
 Não-funcionais: RNF1 100% local (nenhum byte sai das máquinas do operador);
-RNF2 determinístico bit-a-bit por (texto, encoder, versão); RNF3 leitura
-quente < 5 ms por item (medido: µs para projeção; embedding ~10 ms uma vez,
-cacheado); RNF4 zero custo marginal por consulta; RNF5 honestidade
+RNF2 saída REPRODUZÍVEL por perfil de execução selado (texto, encoder,
+pesos/quantização, runtime, classe de hardware) com tolerância numérica
+declarada; bit-a-bit somente onde certificado por perfil — medido: Δ=0,0
+intra-perfil (M4/bge-m3); igualdade ENTRE perfis (Metal vs ROCm) nunca
+testada e não prometida; RNF3 SLOs de latência SEPARADOS: cache-hit p95,
+cache-miss p95, projeção (1/10/100 réguas), ressonância em lote
+(1k/100k/1M), cold-start do sidecar e IPC Rust↔sidecar — o custo sistêmico
+(spawn, socket, contenção no Ollama) é medido como cidadão de 1ª classe, não
+só o matmul; RNF4 zero custo marginal por consulta; RNF5 honestidade
 estrutural: limites publicados na bula de cada régua.
 
 ## 6. Métricas de sucesso
