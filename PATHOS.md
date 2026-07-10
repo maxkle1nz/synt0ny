@@ -7,7 +7,10 @@ envelopes v0 com governança no wire em ~/.m1nd/synt0ny/shadow.jsonl. ADVISORY
 absoluto: nunca escreve em arquivo do m1nd. Honesty refutada fica FORA até
 re-selagem. Fase 2 (auditoria cega ranqueada-vs-cronológica, gate de margem
 +2) SELADA no dia da instalação — janela: >= 7 dias ou >= 30 eventos novos
-(spine/PREREGISTRO-FASE2.md). Exp 13 provou: inglês é a 2ª língua com número
+(spine/PREREGISTRO-FASE2.md). Admin panel local no login:
+com.kle1nz.synt0ny-panel serve 127.0.0.1:1341 (spine/panel/) — saúde do
+Ollama, pulso do shadowd, dials, progresso da janela, histograma agregado;
+scores individuais VELADOS por default (proteção do rotulador cego da F2). Exp 13 provou: inglês é a 2ª língua com número
 (AUC 0,853) e a economia da espinha é 56,6M× no caminho quente.
 
 ## Norte

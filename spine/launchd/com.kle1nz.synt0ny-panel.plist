@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.kle1nz.synt0ny-panel</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/kle1nz/synt0ny/venv/bin/python3</string>
+        <string>/Users/kle1nz/synt0ny/spine/panel/paneld.py</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/kle1nz/.m1nd/synt0ny/paneld.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/kle1nz/.m1nd/synt0ny/paneld.err</string>
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>synt0ny · painel da espinha</title>
+<style>
+  :root{
+    --bg:#14161a; --card:#1b1e24; --card2:#20242b; --line:#2a2f37;
+    --ink:#e8e6e1; --dim:#9a9f a8; --dim:#9aa0a8;
+    --sage:#9DC08B; --amber:#E5C07B; --coral:#E06C75; --blue:#8FA3C8;
+    --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.55 -apple-system,"SF Pro Text",Helvetica,sans-serif;
+    padding:28px 32px 48px}
+  header{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+  h1{font-size:20px;font-weight:600;margin:0;letter-spacing:.2px}
+  h1 span{color:var(--dim);font-weight:400}
+  #stamp{margin-left:auto;color:var(--dim);font-family:var(--mono);font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;margin-bottom:14px}
+  .card{background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:16px 18px}
+  .card h2{font-size:11px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+  .big{font-size:22px;font-family:var(--mono);font-weight:500}
+  .sub{color:var(--dim);font-size:12.5px;margin-top:4px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;
+    margin-right:8px;vertical-align:1px}
+  .ok{background:var(--sage)} .warn{background:var(--amber)}
+  .bad{background:var(--coral)}
+  .wide{grid-column:1/-1}
+  .bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden;
+    margin-top:10px}
+  .bar i{display:block;height:100%;background:var(--sage);border-radius:3px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{color:var(--dim);text-align:left;font-weight:500;padding:4px 10px 6px 0;
+    border-bottom:1px solid var(--line)}
+  td{padding:5px 10px 5px 0;border-bottom:1px solid var(--card2);
+    font-family:var(--mono);white-space:nowrap}
+  td.dim{color:var(--dim)}
+  .hist{display:flex;align-items:flex-end;gap:3px;height:64px;margin-top:8px}
+  .hist i{flex:1;background:var(--blue);opacity:.75;border-radius:2px 2px 0 0;
+    min-height:2px}
+  .veil{filter:blur(5px);transition:filter .25s}
+  .veil.off{filter:none}
+  .veilnote{font-size:12px;color:var(--amber);margin:8px 0 4px;cursor:pointer;
+    user-select:none}
+  pre{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin:6px 0 0;
+    white-space:pre-wrap;word-break:break-all}
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;
+    border:1px solid var(--line);border-radius:99px;padding:2px 10px;
+    margin:2px 4px 2px 0;color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <h1>synt0ny <span>· painel da espinha</span></h1>
+  <div id="stamp">carregando…</div>
+</header>
+
+<div class="grid">
+  <div class="card"><h2>ollama</h2>
+    <div class="big" id="ollama-state">…</div>
+    <div class="sub" id="ollama-sub"></div></div>
+  <div class="card"><h2>shadowd</h2>
+    <div class="big" id="shadowd-state">…</div>
+    <div class="sub" id="shadowd-sub"></div></div>
+  <div class="card"><h2>coleta</h2>
+    <div class="big" id="coleta">…</div>
+    <div class="sub" id="coleta-sub"></div></div>
+  <div class="card"><h2>fase 2 · janela de auditoria</h2>
+    <div class="big" id="fase2">…</div>
+    <div class="sub" id="fase2-sub"></div>
+    <div class="bar"><i id="fase2-bar" style="width:0%"></i></div></div>
+</div>
+
+<div class="grid">
+  <div class="card"><h2>dials certificados</h2><div id="dials"></div></div>
+  <div class="card wide" style="grid-column:span 2"><h2>distribuição de scores
+    (agregada — não identifica eventos)</h2>
+    <div class="hist" id="hist"></div>
+    <div class="sub" id="hist-sub"></div></div>
+</div>
+
+<div class="grid">
+  <div class="card wide"><h2>últimos eventos observados</h2>
+    <div class="veilnote" id="veiltoggle">🙈 scores individuais velados — se
+    você será o rotulador da auditoria cega da Fase 2, mantenha assim ·
+    clique para revelar</div>
+    <table><thead><tr><th>quando</th><th>fonte</th><th>classe declarada</th>
+    <th>score</th></tr></thead><tbody id="eventos"></tbody></table></div>
+</div>
+
+<div class="grid">
+  <div class="card wide"><h2>shadowd.log</h2><pre id="log"></pre></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+let veiled = localStorage.getItem("synt0ny-veil") !== "off";
+$("veiltoggle").onclick=()=>{veiled=!veiled;
+  localStorage.setItem("synt0ny-veil", veiled?"on":"off"); render(last);};
+let last=null;
+function dot(cls){return `<span class="dot ${cls}"></span>`}
+function render(d){
+  if(!d) return; last=d;
+  $("stamp").textContent = d.now + " · atualiza a cada 10 s";
+  const o=d.ollama;
+  $("ollama-state").innerHTML = o.up ? dot("ok")+"ativo" : dot("bad")+"fora do ar";
+  $("ollama-sub").textContent = o.up
+    ? `${o.models.length} modelos · bge-m3 ${o.bge_m3?"presente":"AUSENTE"}`
+      + (o.loaded.length?` · na memória: ${o.loaded.join(", ")}`:"")
+    : "o shadowd pulará ticks até voltar (fail-quiet)";
+  const s=d.shadowd;
+  const fresh = s.tick_age_s!=null && s.tick_age_s < 360;
+  $("shadowd-state").innerHTML = s.loaded
+    ? (fresh? dot("ok")+"tickando" : dot("warn")+"carregado")
+    : dot("bad")+"não carregado";
+  $("shadowd-sub").textContent = s.last_tick
+    ? `último tick ${s.last_tick} (${s.tick_age_s}s atrás) · exit ${s.last_exit}`
+    : "sem tick registrado ainda";
+  $("coleta").textContent = `${d.shadow.total} envelopes`;
+  $("coleta-sub").textContent =
+    `${d.shadow.spectra} espectros em cache · ${d.shadow.novos_fase2} eventos novos pós-selo`;
+  const f=d.fase2;
+  $("fase2").innerHTML = f.pronta ? dot("ok")+"JANELA ABERTA" : dot("warn")+"acumulando";
+  $("fase2-sub").textContent =
+    `${f.dias} de ${f.janela_dias} dias · ${f.eventos_novos} de ${f.janela_eventos} eventos novos`;
+  $("fase2-bar").style.width = Math.round(f.progresso*100)+"%";
+  $("dials").innerHTML = d.dials.map(x=>
+    `<span class="pill">${x.id} v${x.version} · ${x.lang} · AUC ${x.auc} · ${x.mode}</span>`
+  ).join("") || "<span class='sub'>nenhum dial</span>";
+  const h=d.shadow.hist, mx=Math.max(...h,1);
+  $("hist").innerHTML = h.map(v=>
+    `<i style="height:${Math.round(v/mx*100)}%" title="${v}"></i>`).join("");
+  $("hist-sub").textContent =
+    `faixa ${d.shadow.hist_range[0].toFixed(3)} … ${d.shadow.hist_range[1].toFixed(3)} · ${d.shadow.total} leituras`;
+  $("eventos").innerHTML = d.shadow.recentes.map(e=>
+    `<tr><td class="dim">${(e.ts||"").replace("T"," ").slice(0,19)}</td>`+
+    `<td>${e.source||""}</td><td>${e.declared||"—"}</td>`+
+    `<td class="${veiled?"veil":"veil off"}">${e.score==null?"—":e.score.toFixed(4)}</td></tr>`
+  ).join("");
+  $("veiltoggle").textContent = veiled
+    ? "🙈 scores individuais velados — se você será o rotulador da auditoria cega da Fase 2, mantenha assim · clique para revelar"
+    : "👁 scores revelados — se você olhar rankings, outro rotulador deve fazer a auditoria cega · clique para velar";
+  $("log").textContent = (d.shadowd.log_tail||[]).join("");
+}
+async function tick(){
+  try{ render(await (await fetch("/api/status")).json()); }
+  catch(e){ $("stamp").textContent = "paneld fora do ar? " + e; }
+}
+tick(); setInterval(tick, 10000);
+</script>
+</body>
+</html>
