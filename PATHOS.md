@@ -1,5 +1,15 @@
 # PATHOS — synt0ny
 
+## A espinha (T0 — VIVO desde 2026-07-11)
+O shadowd respira dentro do m1nd: launchd com.kle1nz.synt0ny-shadowd (tick
+5 min), dial certificado bug_win_en v1.0.0 a bordo (laudo Exp 13 no manifest),
+envelopes v0 com governança no wire em ~/.m1nd/synt0ny/shadow.jsonl. ADVISORY
+absoluto: nunca escreve em arquivo do m1nd. Honesty refutada fica FORA até
+re-selagem. Fase 2 (auditoria cega ranqueada-vs-cronológica, gate de margem
++2) SELADA no dia da instalação — janela: >= 7 dias ou >= 30 eventos novos
+(spine/PREREGISTRO-FASE2.md). Exp 13 provou: inglês é a 2ª língua com número
+(AUC 0,853) e a economia da espinha é 56,6M× no caminho quente.
+
 ## Norte
 Laboratório de geometria semântica em pt-BR: medir a estrutura real do
 significado em embeddings locais (Ollama) com protocolo de pré-registro — e
