@@ -63,14 +63,27 @@ o método é o produto tanto quanto os resultados.
   9200) derruba o startup — FIX PROVADO (Exp 9): `codex exec -c
   'mcp_servers={}'` anula sem tocar no config; WAF exige VPN ligada.
 
+- Exp 10 (a ponte, verdict fugu CHANGE aplicado): o eixo da intenção TRANSFERE
+  para frases — 100% em 52 frases (AUC 1.0; null matched p95 80,8%), 14/14 em
+  vocabulário nunca visto. ESPECTRÔMETRO VIÁVEL. Batismo do mostrador adiado:
+  bloco adversarial 3/8 (o eixo mistura valência do evento com tipo lexical do
+  verbo — contexto forte vence o verbo, contexto sutil perde). Limites
+  declarados: dataset autoral (não é produção); discrepância 12-vs-14 no
+  tamanho do estrato far entre texto do prereg e lista selada (lista prevalece;
+  resultado inalterado).
+
 ## Próximos passos (fila real, em ordem)
-1. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
+1. Validação do espectrômetro em DADOS REAIS (reviews/commits/tickets de
+   verdade — o 100% é de frases autorais limpas; produção tem ruído).
+2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador
+   (valência do evento vs tipo lexical) com poder estatístico.
+3. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
    similaridade purificada — substitui a purificação vetorial sem mutilar.
-2. "Dicionário vs diário" — frames de Fillmore mensuráveis (verbo ressoa com
+4. "Dicionário vs diário" — frames de Fillmore mensuráveis (verbo ressoa com
    seus papéis típicos?) vs conhecimento episódico (ausente por construção).
-3. Hipótese nova do Exp 9 (não-gate): futuro − v_tempo → condicional (futuro
+5. Hipótese nova do Exp 9 (não-gate): futuro − v_tempo → condicional (futuro
    do pretérito) — o erro sistemático merece teste próprio.
-4. Auto-refresh do PATHOS (padrão git-cliff): opcional aqui — repo sem CI;
+6. Auto-refresh do PATHOS (padrão git-cliff): opcional aqui — repo sem CI;
    instalar se o repo ganhar cadência.
 
 ## Prompt do próximo agente
