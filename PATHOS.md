@@ -115,6 +115,13 @@ o método é o produto tanto quanto os resultados.
 6. Auto-refresh do PATHOS (padrão git-cliff): opcional aqui — repo sem CI;
    instalar se o repo ganhar cadência.
 
+## Documentos canônicos
+`docs/PRD.md` (visão, requisitos, métricas, riscos, roadmap, governança) e
+`docs/UML.md` (componentes, sequências, ciclo de vida de régua) — autoria
+assento Fable, 2026-07-11, baselined nos Exp 1-12 + conselho de 4 vozes
+(`docs/FRONTEIRA-M1ND.md`). Mudança de arquitetura/escopo atualiza PRD/UML
+no mesmo burst (doc-gate).
+
 ## Prompt do próximo agente
 Leia este PATHOS e `README.md`; a verdade viva é `lab/` (pré-registros +
 results). Toda mudança de estado/doutrina volta para cá na mesma sessão.
