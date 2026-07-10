@@ -1,4 +1,4 @@
-# Fronteira sintonia × m1nd — síntese do conselho de 4 vozes
+# Fronteira synt0ny × m1nd — síntese do conselho de 4 vozes
 2026-07-11 · Vozes: fable (medium), fugu/Sakana (medium), gpt-5.6-sol (xhigh,
 passada l00p), agente-orquestrador (proposta independente prévia). Todas
 read-only, com evidência própria (arquivo:linha) nos dois repos.
@@ -7,7 +7,7 @@ read-only, com evidência própria (arquivo:linha) nos dois repos.
 `m1nd-core/src/embed.rs` declara em comentário que o tier semântico atual é
 model2vec estático ("NOT transformer-grade… the ONNX / bge transformer tier is
 the path for maximal quality") e `embed_cache.rs` já invalida por
-`model_id + dim`. O m1nd deixou a porta pronta; a sintonia é a chave.
+`model_id + dim`. O m1nd deixou a porta pronta; a synt0ny é a chave.
 
 ## Convergências (por contagem de vozes)
 1. DAEMON/TICK COMO PRIMEIRO HABITAT — 4/4. Reflexos advisory nos workflows
@@ -46,7 +46,7 @@ the path for maximal quality") e `embed_cache.rs` já invalida por
 - Reflex Foundry (sol) — a cada ≥30 outcomes rotulados (learn/debrief/
   field-reports), job periódico monta 12 exemplares balanceados, SELA uma
   régua nova, roda LOO + null + holdout temporal; só aprovadas viram
-  artefatos consumíveis pelo daemon. O protocolo científico da sintonia
+  artefatos consumíveis pelo daemon. O protocolo científico da synt0ny
   como fábrica automática de reflexos.
 - Placar do apostador como serviço (agente) — perfil de calibração por
   agente (lê-bem/escreve-mal) vivendo na medulla, herdado entre sessões.
@@ -54,7 +54,7 @@ the path for maximal quality") e `embed_cache.rs` já invalida por
 ## ARMADILHA UNÂNIME (4/4 — lei da integração)
 O mostrador NUNCA escreve, decide, promove ou concede act. Sempre advisory,
 riders capados em reverify, gates existentes intocados. Dupla fundação
-independente: a trilogia experimental da sintonia (atributos legíveis, não
+independente: a trilogia experimental da synt0ny (atributos legíveis, não
 escrevíveis) e a constituição do m1nd ("a letter cannot color the map").
 E (fugu): portar o MÉTODO (embeddings locais + firmamento + 12-exemplos +
 LOO/null + cache por hash + advisory), NUNCA transplantar o artefato pt-BR

@@ -1,4 +1,4 @@
-# sintonia
+# synt0ny
 
 Busca semântica por ressonância + eixo da intenção, para verbos pt-BR.
 Consolidação executável dos 6 experimentos pré-registrados de 2026-07-10
@@ -17,9 +17,9 @@ O que está por trás (tudo medido, ver `lab/PREREGISTRO*.md`):
 ## Uso
 
 ```
-venv/bin/python3 sintonia.py buscar <verbo>       # vizinhos por ressonância
-venv/bin/python3 sintonia.py intencao <verbo>...  # posição no eixo ⊖/⊕
-venv/bin/python3 sintonia.py eixo                 # extremos do eixo no banco
+venv/bin/python3 synt0ny.py buscar <verbo>       # vizinhos por ressonância
+venv/bin/python3 synt0ny.py intencao <verbo>...  # posição no eixo ⊖/⊕
+venv/bin/python3 synt0ny.py eixo                 # extremos do eixo no banco
 ```
 
 Palavras fora do banco de 227 funcionam (zero-shot): o espectro é gerado na

@@ -1,9 +1,9 @@
-# PATHOS — sintonia
+# PATHOS — synt0ny
 
 ## Norte
 Laboratório de geometria semântica em pt-BR: medir a estrutura real do
 significado em embeddings locais (Ollama) com protocolo de pré-registro — e
-consolidar o que sobrevive aos gates em ferramenta executável (`sintonia.py`).
+consolidar o que sobrevive aos gates em ferramenta executável (`synt0ny.py`).
 Nasceu de uma conversa (2026-07-10, "das matrizes ao vocabulário de modos");
 o método é o produto tanto quanto os resultados.
 
@@ -29,7 +29,7 @@ o método é o produto tanto quanto os resultados.
   de MOSTRADORES, não de botões. Observação qualitativa não-gate: futuro −
   v_tempo caiu 6/12 vezes no condicional (futuro do pretérito) — erro
   sistemático gramaticalmente coerente; hipótese para investigação futura.
-- Ferramenta `sintonia.py` funcionando (buscar/intencao/eixo, zero-shot);
+- Ferramenta `synt0ny.py` funcionando (buscar/intencao/eixo, zero-shot);
   caderno publicado como artifact (`caderno.html`).
 
 ## Doutrina de operação (o que fez esta casa funcionar)

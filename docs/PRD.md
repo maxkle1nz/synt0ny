@@ -1,4 +1,4 @@
-# PRD — sintonia: motor local de discernimento (advisory)
+# PRD — synt0ny: motor local de discernimento (advisory)
 Nome externo qualificado por review (2026-07-11): "instrumentação semântica
 local" / "semantic instrumentation engine" — o qualificador é parte do nome
 para o nome não induzir o overclaiming que o produto combate.
@@ -58,7 +58,7 @@ sensibilidades) — sem laudo, sem painel; RF3 leitura multi-régua de um texto
 em 1 chamada (perfil de mostradores + percentis); RF4 busca/dedupe por
 ressonância com dois escores (bruto + purificado) onde o firmamento se
 aplica; RF5 modo advisory-only: toda saída é score+rider, nunca ação; RF6
-CLI (existente: sintonia.py buscar/intencao/eixo) e biblioteca importável;
+CLI (existente: synt0ny.py buscar/intencao/eixo) e biblioteca importável;
 RF7 replay offline sobre históricos (jsonl/csv) para calibração e auditoria;
 RF8 versionamento de réguas (axis_id + versão + hash do laudo).
 RF9 purification_policy explícita por leitura (disabled | natural_language |
@@ -116,7 +116,7 @@ batismo do mostrador de valência, léxico multi-idioma.
 ## 9. Governança (a lei)
 1. O mostrador nunca escreve, decide, promove ou bloqueia — advisory, riders
    capados em reverify. Fundamento duplo e independente: trilogia
-   experimental da sintonia + constituição do m1nd ("a letter cannot color
+   experimental da synt0ny + constituição do m1nd ("a letter cannot color
    the map"). 2. Régua sem laudo não existe. 3. Mudança BIG passa por
    verdict de oráculo antes do selo. 4. Falha é publicada com número — a
    bula é interface, não apêndice.

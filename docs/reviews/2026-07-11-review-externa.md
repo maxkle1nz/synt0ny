@@ -36,10 +36,10 @@ B. ENVELOPE COMPLETO NO T0 MATARIA O T0 — proveniência de 10 campos é o alvo
 
 ## Nota do ecossistema
 O crítico deduziu, só pelos princípios do PRD, a composição real do
-portfólio do operador: "m1nd conhece · sintonia mede · l1ght prova ·
+portfólio do operador: "m1nd conhece · synt0ny mede · l1ght prova ·
 h4nd age · o rito limita" — l1ght e h4nd existem e ocupam exatamente esses
 assentos. Coerência externa confirmada por leitor cego.
 
 ## A frase que fica
-"sintonia não pensa pelo agente; impede que o agente precise pensar sobre
+"synt0ny não pensa pelo agente; impede que o agente precise pensar sobre
 tudo."

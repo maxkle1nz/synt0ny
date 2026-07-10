@@ -1,4 +1,4 @@
-# UML — sintonia e subsistemas
+# UML — synt0ny e subsistemas
 2026-07-11 · Autoria: assento Fable · Par do docs/PRD.md. Diagramas em
 mermaid (renderizam no GitHub). Fonte de verdade do estado: PATHOS.md.
 
@@ -6,7 +6,7 @@ mermaid (renderizam no GitHub). Fonte de verdade do estado: PATHOS.md.
 
 ```mermaid
 flowchart TB
-    subgraph SINTONIA["sintonia — motor local de discernimento"]
+    subgraph SINTONIA["synt0ny — motor local de discernimento"]
         ENC["Espectrômetro\nOllama bge-m3 (A) · qwen3-8b (B)\ndeterminístico, local"]
         CACHE[("Cache de espectros\ncontent-hash + encoder + versão\n*.npz / *.bin")]
         FIRM["Firmamento\nremove camada ortográfica (k=50)\nNUNCA em flexões/código"]
@@ -23,7 +23,7 @@ flowchart TB
     RES --> OUT
     RITO -.->|"nenhuma régua sem laudo"| DIALS
     subgraph CONSUMERS["consumidores"]
-        CLI["sintonia.py CLI\nbuscar · intencao · eixo"]
+        CLI["synt0ny.py CLI\nbuscar · intencao · eixo"]
         M1ND["m1nd (T0→T3)\ntick sidecar · medulla hygiene\nseek two-score · delegação"]
         AG["agentes LLM\ntriagem · dedupe · anti-eco"]
     end
@@ -37,7 +37,7 @@ flowchart TB
 ```mermaid
 sequenceDiagram
     participant C as Consumidor (agente/CLI/m1nd)
-    participant S as sintonia
+    participant S as synt0ny
     participant K as Cache
     participant O as Ollama (local)
     C->>S: ler(texto, [réguas])
@@ -60,7 +60,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant D as m1nd daemon (tick)
-    participant SC as sidecar sintonia
+    participant SC as sidecar synt0ny
     participant K as spectra cache (.m1nd/)
     participant A as fila de alerts
     participant LLM as agente/LLM (caro)
