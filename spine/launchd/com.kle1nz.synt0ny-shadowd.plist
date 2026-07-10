@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.kle1nz.synt0ny-shadowd</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/kle1nz/synt0ny/venv/bin/python3</string>
+        <string>/Users/kle1nz/synt0ny/spine/shadowd.py</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>300</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/kle1nz/.m1nd/synt0ny/shadowd.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/kle1nz/.m1nd/synt0ny/shadowd.err</string>
+    <key>ProcessType</key>
+    <string>Background</string>
+    <key>Nice</key>
+    <integer>10</integer>
+</dict>
+</plist>

@@ -1,0 +1,40 @@
+{
+ "id": "bug_win_en",
+ "version": "1.0.0",
+ "encoder": {
+  "id": "bge-m3",
+  "runtime": "ollama",
+  "dim": 1024
+ },
+ "language": "en",
+ "domain": "m1nd-field-reports",
+ "polarity": {
+  "positive": "bug/severe",
+  "negative": "win/benign"
+ },
+ "examples_sha256": "be2817cfb38937df478f278ee9448050f83b0c8218cc1f4b94d77deca18cd283",
+ "certification": {
+  "experiment": "Exp 13 (spine/PREREGISTRO-EXP13.md)",
+  "auc": 0.853,
+  "null_p95": 0.747,
+  "gate": "AUC >= 0.80 and > null p95 — PASSED",
+  "ground_truth": "97 field reports labeled by 53 agents"
+ },
+ "bula": [
+  "reads tone/severity of agent field reports in English only",
+  "advisory always: max_effect = reverify, never act/block/promote",
+  "single encoder: fine signals require a second encoder",
+  "purification disabled for this domain (declared abstention)",
+  "~15% pairwise inversions expected at AUC 0.853"
+ ],
+ "governance": {
+  "mode": "advisory",
+  "max_effect": "reverify",
+  "forbidden_actions": [
+   "block",
+   "promote",
+   "delete",
+   "grant_act"
+  ]
+ }
+}
