@@ -75,9 +75,17 @@ o método é o produto tanto quanto os resultados.
 ## Próximos passos (fila real, em ordem)
 0. Exp 11 "o atlas" — FUNDAÇÃO PRONTA (ver atlas/README.md): léxico de 83.918
    lemas (OWN-PT + TeP 2.0, ambos CC BY-SA), padrão-ouro externo de 1.158
-   antonímias verbais. Infra decidida por benchmark: M4 Max local (GENESIS
-   RX 7900/ROCm de reserva — 148 vs 119 p/s, ganho não paga coordenação).
-   Falta: desenho + verdict cross-vendor + selo + run (~12 min de embedding).
+   antonímias verbais. Falta: desenho + verdict cross-vendor + selo + run.
+   UPGRADE 2026-07-10: Exp 11 será MULTI-INSTRUMENTO — bancada A = M4 Max
+   com bge-m3 (119 p/s); bancada B = GENESIS (RX 7900 24GB/ROCm, Ollama,
+   espaço liberado pelo Max com carta branca) com qwen3-embedding:8b (15×
+   maior). Resultados que sobrevivem a DOIS encoders independentes matam a
+   crítica "um único instrumento" que pesa sobre os Exp 1-10. Trilhas
+   futuras da bancada B (registradas, não prometidas): sparse autoencoders
+   sobre os espectros (features monossemânticas via ROCm/PyTorch),
+   observatório de jobs noturnos (replicações com seeds, varreduras),
+   qwen3:32b local como rotulador auxiliar declarado (sempre validado por
+   amostra humana).
 1. Validação do espectrômetro em DADOS REAIS (reviews/commits/tickets de
    verdade — o 100% é de frases autorais limpas; produção tem ruído).
 2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador
