@@ -73,6 +73,11 @@ o método é o produto tanto quanto os resultados.
   resultado inalterado).
 
 ## Próximos passos (fila real, em ordem)
+0. Exp 11 "o atlas" — FUNDAÇÃO PRONTA (ver atlas/README.md): léxico de 83.918
+   lemas (OWN-PT + TeP 2.0, ambos CC BY-SA), padrão-ouro externo de 1.158
+   antonímias verbais. Infra decidida por benchmark: M4 Max local (GENESIS
+   RX 7900/ROCm de reserva — 148 vs 119 p/s, ganho não paga coordenação).
+   Falta: desenho + verdict cross-vendor + selo + run (~12 min de embedding).
 1. Validação do espectrômetro em DADOS REAIS (reviews/commits/tickets de
    verdade — o 100% é de frases autorais limpas; produção tem ruído).
 2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador

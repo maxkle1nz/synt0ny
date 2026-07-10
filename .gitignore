@@ -2,3 +2,4 @@ venv/
 cache.npz
 __pycache__/
 .DS_Store
+atlas/data/
