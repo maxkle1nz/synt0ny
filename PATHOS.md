@@ -11,6 +11,21 @@ pronto e testado (`spine/hooks/prompt-read.py`, fail-silent 1 s) — registro
 no settings global reservado à MÃO HUMANA (classificador bloqueia agente
 instalando hook em si mesmo; a casa concorda).
 
+## As frentes da sombra (v1.2, 2026-07-11)
+6 fontes em streams isolados (F2 blindada aos originais, verificado): field-
+reports + inbox (a janela da auditoria), bridge (correio pt entre agentes,
+valencia_pt + DOMAIN_SHIFT), daemon_alerts (armada, vazia), e GITHUB — o giro
+do perfil inteiro por-repo via gh api (a events API censura payloads
+privados; colheita = repos/{x}/commits com dedupe por SHA): 136 commits de 7
+repos no 1º tick, com meta repo/sha e o rider anti-Exp14 (tom agregável,
+NUNCA risco). Painel ganhou cards de portfólio e streams. Fora por decisão:
+transcripts (a porta é o hook UserPromptSubmit, aguardando colagem humana no
+settings) e previsão de risco de commits (refutada). Exp 15 (feat↔fix vs
+prefixos conventional): AUC 0,719 > null 0,638 mas < gate 0,80 — REFUTADA
+para certificação, sinal reconhecido, G2 de ranking passou (65%); re-selagem
+= exemplos derivados do domínio (o estilo poético dos commits do m1nd vence
+léxico genérico).
+
 ## A espinha (T0 — VIVO desde 2026-07-11)
 O shadowd respira dentro do m1nd: launchd com.kle1nz.synt0ny-shadowd (tick
 5 min), dial certificado bug_win_en v1.0.0 a bordo (laudo Exp 13 no manifest),
