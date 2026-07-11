@@ -6,6 +6,7 @@ dials certificados, progresso da Fase 2, coleta e últimos eventos.
 Read-only sobre tudo; nenhuma ação disponível pela interface (a lei).
 """
 import glob
+import hashlib
 import json
 import os
 import subprocess
@@ -14,12 +15,76 @@ import time
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
+import numpy as np
+
 HOME = os.path.expanduser("~")
 ROOT = os.path.join(HOME, ".m1nd", "synt0ny")
+SPECTRA = os.path.join(ROOT, "spectra")
 DIALS = os.path.join(HOME, "synt0ny", "dials")
 HERE = os.path.dirname(os.path.abspath(__file__))
 MARCO_FASE2 = "2026-07-10T21:50:00"
 PORT = 1341
+ENCODER = "bge-m3"
+MAX_TEXT = 20000
+
+_dials_cache = {"mtime": 0, "dials": []}
+
+
+def load_dials_full():
+    paths = sorted(glob.glob(os.path.join(DIALS, "*", "manifest.json")))
+    mtime = max((os.path.getmtime(p) for p in paths), default=0)
+    if mtime != _dials_cache["mtime"]:
+        out = []
+        for mp in paths:
+            try:
+                m = json.load(open(mp))
+                z = np.load(os.path.join(os.path.dirname(mp), "axis.npz"))
+                out.append((m, z["v"].astype(np.float32),
+                            np.sort(z["ref_proj"].astype(np.float32))))
+            except Exception:
+                continue
+        _dials_cache.update(mtime=mtime, dials=out)
+    return _dials_cache["dials"]
+
+
+def spectrum_cached(text):
+    h = hashlib.sha256(f"{ENCODER}:{text}".encode()).hexdigest()
+    os.makedirs(SPECTRA, exist_ok=True)
+    path = os.path.join(SPECTRA, f"{h}.npy")
+    if os.path.exists(path):
+        return np.load(path), h, True
+    body = json.dumps({"model": ENCODER, "input": [text]}).encode()
+    req = urllib.request.Request("http://localhost:11434/api/embed",
+                                 data=body,
+                                 headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        x = np.array(json.loads(r.read())["embeddings"][0], dtype=np.float32)
+    x = x / np.linalg.norm(x)
+    np.save(path, x)
+    return x, h, False
+
+
+def read_text(text, which=None):
+    x, h, cached = spectrum_cached(text)
+    readings = []
+    for m, v, ref in load_dials_full():
+        if which and m["id"] not in which:
+            continue
+        score = float(x @ v)
+        pct = float((ref < score).mean() * 100)
+        readings.append({
+            "axis": {"id": m["id"], "version": m["version"],
+                     "language": m.get("language")},
+            "score": round(score, 4),
+            "percentile_ref": round(pct, 1),
+            "polarity": m.get("polarity"),
+            "riders": [{"code": "SINGLE_ENCODER", "severity": "reverify"},
+                       {"code": "REF_BAND_SMALL",
+                        "note": f"percentil sobre {len(ref)} exemplos"}],
+            "governance": m["governance"],
+        })
+    return {"input_sha256": h, "cached": cached, "encoder": ENCODER,
+            "readings": readings}
 
 
 def ollama_status():
@@ -148,6 +213,26 @@ class H(BaseHTTPRequestHandler):
                 self._send(200, "text/html; charset=utf-8", f.read())
         else:
             self._send(404, "text/plain", b"404")
+
+    def do_POST(self):
+        if self.path != "/api/read":
+            self._send(404, "text/plain", b"404")
+            return
+        try:
+            n = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(min(n, MAX_TEXT * 4)))
+            text = (body.get("text") or "").strip()[:MAX_TEXT]
+            if not text:
+                self._send(400, "application/json",
+                           b'{"error":"text vazio"}')
+                return
+            out = read_text(text, body.get("dials"))
+            self._send(200, "application/json",
+                       json.dumps(out, ensure_ascii=False).encode())
+        except Exception as e:
+            self._send(500, "application/json",
+                       json.dumps({"error": f"{type(e).__name__}: {e}"})
+                       .encode())
 
 
 def main():

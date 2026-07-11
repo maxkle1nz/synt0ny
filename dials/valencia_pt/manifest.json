@@ -1,0 +1,45 @@
+{
+ "id": "valencia_pt",
+ "version": "1.1.0",
+ "encoder": {
+  "id": "bge-m3",
+  "runtime": "ollama",
+  "dim": 1024
+ },
+ "governance": {
+  "mode": "advisory",
+  "max_effect": "reverify",
+  "forbidden_actions": [
+   "block",
+   "promote",
+   "delete",
+   "grant_act"
+  ]
+ },
+ "language": "pt-BR",
+ "domain": "texto avaliativo curto (reviews, feedback, frases)",
+ "polarity": {
+  "positive": "acréscimo/construtivo",
+  "negative": "dissipação/destrutivo"
+ },
+ "certification": {
+  "experiment": "Exp 5 + Exp 10 + Exp 12 (lab/, atlas/)",
+  "loo": "12/12 pares held-out (Exp 5)",
+  "phrase_bridge": "100% em 52 frases · 14/14 vocab virgem",
+  "production": "93.2% acc · AUC 0.979 em 500 reviews reais",
+  "gate": "todos PASSED"
+ },
+ "bula": [
+  "lê valência de texto pt curto; forte no polo negativo",
+  "erra onde humanos divergem: ironia, mistas, sem-valência",
+  "não é intenção pragmática (pergunta/ordem) — só tom",
+  "advisory always: max_effect = reverify",
+  "viés lexical em construções adversariais (Exp 10: 3/8)"
+ ],
+ "examples_sha256": "2cc855bbcee623bc7b425aa29d0b6e836d30bc0a9bdec13baf2e8d891bd06772",
+ "ref_band": {
+  "n": 24,
+  "min": -0.2619955241680145,
+  "max": 0.285469114780426
+ }
+}
