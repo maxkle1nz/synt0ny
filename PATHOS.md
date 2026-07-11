@@ -1,5 +1,16 @@
 # PATHOS — synt0ny
 
+## O circuito (produto fechado em 2026-07-11)
+medir→servir→consumir ligado: `POST /api/read` no paneld (espectro com cache
+compartilhado + projeção nos dials + envelope v0; testado pt/en, ~80 ms);
+biblioteca `dials/` v1.1 com bandas de referência e a régua de PRODUÇÃO
+exportada (valencia_pt, laudo Exp 5/10/12) ao lado da bug_win_en; MCP server
+`spine/mcp/synt0ny_mcp.py` com a tool `synt0ny_read` REGISTRADO user-scope no
+Claude Code (todo agente da máquina enxerga o motor); hook UserPromptSubmit
+pronto e testado (`spine/hooks/prompt-read.py`, fail-silent 1 s) — registro
+no settings global reservado à MÃO HUMANA (classificador bloqueia agente
+instalando hook em si mesmo; a casa concorda).
+
 ## A espinha (T0 — VIVO desde 2026-07-11)
 O shadowd respira dentro do m1nd: launchd com.kle1nz.synt0ny-shadowd (tick
 5 min), dial certificado bug_win_en v1.0.0 a bordo (laudo Exp 13 no manifest),
