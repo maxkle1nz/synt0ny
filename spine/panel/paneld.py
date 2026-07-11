@@ -152,7 +152,19 @@ def shadow_data():
         for s in scores:
             hist[min(11, int((s - lo) / span * 12))] += 1
     spectra = len(glob.glob(os.path.join(ROOT, "spectra", "*.npy")))
+    gh_repos = {}
+    for e in envs:
+        if e.get("stream") == "github" and e.get("meta"):
+            r = e["meta"].get("repo", "?")
+            gh_repos[r] = gh_repos.get(r, 0) + 1
+    streams = {}
+    for e in envs:
+        s = e.get("stream", e.get("source", "?"))
+        streams[s] = streams.get(s, 0) + 1
     return {"total": len(envs), "novos_fase2": len(novos),
+            "github_repos": dict(sorted(gh_repos.items(),
+                                        key=lambda x: -x[1])),
+            "streams": streams,
             "hist": hist, "hist_range": [min(scores or [0]),
                                          max(scores or [0])],
             "spectra": spectra,

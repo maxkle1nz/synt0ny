@@ -1,0 +1,18 @@
+{
+ "m1nd": {
+  "n": 373,
+  "auc": 0.7188034188034188,
+  "null_p95": 0.6376353276353276,
+  "prec20_fix": 0.65,
+  "g1": false,
+  "g2": true
+ },
+ "~/l00p": {
+  "n": 11,
+  "status": "insuficiente"
+ },
+ "~/synt0ny": {
+  "n": 0,
+  "status": "insuficiente"
+ }
+}

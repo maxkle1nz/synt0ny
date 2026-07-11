@@ -78,6 +78,12 @@
 </div>
 
 <div class="grid">
+  <div class="card"><h2>github · giro do perfil</h2><div id="github"></div>
+    <div class="sub" id="github-sub"></div></div>
+  <div class="card"><h2>streams da sombra</h2><div id="streams"></div></div>
+</div>
+
+<div class="grid">
   <div class="card"><h2>dials certificados</h2><div id="dials"></div></div>
   <div class="card wide" style="grid-column:span 2"><h2>distribuição de scores
     (agregada — não identifica eventos)</h2>
@@ -130,6 +136,15 @@ function render(d){
   $("fase2-sub").textContent =
     `${f.dias} de ${f.janela_dias} dias · ${f.eventos_novos} de ${f.janela_eventos} eventos novos`;
   $("fase2-bar").style.width = Math.round(f.progresso*100)+"%";
+  const gh = d.shadow.github_repos || {};
+  $("github").innerHTML = Object.entries(gh).map(([r,n])=>
+    `<span class="pill">${r.replace(/^.*\//,"")} · ${n}</span>`).join("")
+    || "<span class='sub'>sem commits colhidos</span>";
+  $("github-sub").textContent = Object.keys(gh).length
+    ? `${Object.values(gh).reduce((a,b)=>a+b,0)} commits · ${Object.keys(gh).length} repos · leitura de tom agregável (nunca risco — Exp 14)`
+    : "";
+  $("streams").innerHTML = Object.entries(d.shadow.streams||{}).map(([s,n])=>
+    `<span class="pill">${s} · ${n}</span>`).join("");
   $("dials").innerHTML = d.dials.map(x=>
     `<span class="pill">${x.id} v${x.version} · ${x.lang} · AUC ${x.auc} · ${x.mode}</span>`
   ).join("") || "<span class='sub'>nenhum dial</span>";

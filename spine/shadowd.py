@@ -51,7 +51,14 @@ SOURCES = [
      "dials": ["bug_win_en"],
      "riders": [{"code": "DOMAIN_SHIFT", "severity": "info",
                  "note": "alerts do daemon; dial selado p/ field-reports"}]},
+    {"path": "gh:/users/maxkle1nz/events",
+     "stream": "github", "mode": "github_events",
+     "dials": ["bug_win_en"],
+     "riders": [{"code": "DOMAIN_SHIFT", "severity": "info",
+                 "note": "commits do perfil; leitura de tom agregável, "
+                         "NUNCA previsão de risco (Exp 14 refutou)"}]},
 ]
+GH = "/opt/homebrew/bin/gh"
 
 
 def log(msg):
@@ -99,8 +106,57 @@ def extract_text(d):
     return next((str(d[k]).strip() for k in TEXT_FIELDS if d.get(k)), "")
 
 
+def _gh(path):
+    import subprocess
+    raw = subprocess.run([GH, "api", path], capture_output=True,
+                         text=True, timeout=30).stdout
+    return json.loads(raw)
+
+
+def github_events(spec, state):
+    """Colhe commits novos por-repo (a API de events censura payloads
+    privados). 1 chamada de listagem + 1 por repo ativo desde o último tick."""
+    seen_key = f"seen:{spec['path']}"
+    since_key = f"since:{spec['path']}"
+    seen = set(state.get(seen_key, []))
+    since = state.get(since_key) or time.strftime(
+        "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - 48 * 3600))
+    now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    fresh = []
+    try:
+        repos = _gh("/user/repos?sort=pushed&per_page=15"
+                    "&affiliation=owner,organization_member")
+        for r in repos if isinstance(repos, list) else []:
+            if (r.get("pushed_at") or "") < since:
+                continue
+            full = r["full_name"]
+            try:
+                commits = _gh(f"/repos/{full}/commits?since={since}"
+                              "&per_page=50")
+            except Exception:
+                continue
+            for c in commits if isinstance(commits, list) else []:
+                sha = c.get("sha", "")
+                if not sha or sha in seen:
+                    continue
+                seen.add(sha)
+                msg = (c.get("commit", {}).get("message", "")
+                       .split("\n")[0])
+                author = (c.get("author") or {}).get("login") or \
+                    c.get("commit", {}).get("author", {}).get("name", "")
+                fresh.append({"text": msg, "repo": full,
+                              "sha": sha[:12], "author": author})
+    except Exception:
+        return []
+    state[seen_key] = sorted(seen)[-3000:]
+    state[since_key] = now_iso
+    return fresh
+
+
 def new_items(spec, state):
     path = spec["path"]
+    if spec["mode"] == "github_events":
+        return github_events(spec, state)
     if not os.path.exists(path):
         return []
     if spec["mode"] == "jsonl":
@@ -180,6 +236,8 @@ def main():
                             "source": os.path.basename(spec["path"]),
                             "input_sha256": h,
                             "declared_class": d.get("class"),
+                            "meta": {k: d[k] for k in ("repo", "sha")
+                                     if d.get(k)} or None,
                             "axis": {"id": m["id"],
                                      "version": m["version"]},
                             "score": round(float(x @ v), 4),
