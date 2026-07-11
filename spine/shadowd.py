@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""shadowd — a espinha em modo sombra (T0).
+"""shadowd v1.1 — a espinha em modo sombra, multi-frente.
 
-Tail incremental das fontes do m1nd, projeção nos dials certificados,
-um envelope v0 por evento em shadow.jsonl. ADVISORY: nunca toca arquivo
-do m1nd, nunca age. Fail-quiet: qualquer erro vira 1 linha de log.
+Streams separados por fonte, dials adequados por domínio, e leituras
+fora-de-domínio marcadas com DOMAIN_SHIFT (coleta honesta, nunca medição
+fingida). A janela da Fase 2 segue julgando SÓ os streams originais.
+ADVISORY: nunca toca arquivo do m1nd. Fail-quiet.
 """
 import glob
 import hashlib
@@ -18,8 +19,6 @@ import numpy as np
 HOME = os.path.expanduser("~")
 SYNT = os.path.join(HOME, "synt0ny")
 ROOT = os.path.join(HOME, ".m1nd", "synt0ny")
-SOURCES = [os.path.join(HOME, ".m1nd", "field-reports.jsonl"),
-           os.path.join(HOME, ".m1nd", "inbox.jsonl")]
 STATE = os.path.join(ROOT, "state.json")
 SHADOW = os.path.join(ROOT, "shadow.jsonl")
 SPECTRA = os.path.join(ROOT, "spectra")
@@ -27,7 +26,32 @@ LOG = os.path.join(ROOT, "shadowd.log")
 PID = os.path.join(ROOT, "shadowd.pid")
 OLLAMA = "http://localhost:11434"
 ENCODER = "bge-m3"
-TEXT_FIELDS = ("what", "text", "message", "body", "summary")
+TEXT_FIELDS = ("what", "text", "message", "body", "summary", "title",
+               "detail")
+
+SOURCES = [
+    {"path": os.path.join(HOME, ".m1nd", "field-reports.jsonl"),
+     "stream": "field-reports", "mode": "jsonl", "dials": None,
+     "riders": []},
+    {"path": os.path.join(HOME, ".m1nd", "inbox.jsonl"),
+     "stream": "inbox", "mode": "jsonl", "dials": None, "riders": []},
+    {"path": os.path.join(HOME, ".m1nd", "bridge",
+                          "h4nd-to-orchestrator.jsonl"),
+     "stream": "bridge", "mode": "jsonl", "dials": ["valencia_pt"],
+     "riders": [{"code": "DOMAIN_SHIFT", "severity": "info",
+                 "note": "correio de agente pt; dial selado p/ avaliativo"}]},
+    {"path": os.path.join(HOME, ".m1nd", "bridge",
+                          "orchestrator-to-h4nd.jsonl"),
+     "stream": "bridge", "mode": "jsonl", "dials": ["valencia_pt"],
+     "riders": [{"code": "DOMAIN_SHIFT", "severity": "info",
+                 "note": "correio de agente pt; dial selado p/ avaliativo"}]},
+    {"path": os.path.join(HOME, ".m1nd", "runtimes", "claude",
+                          "daemon_alerts.json"),
+     "stream": "daemon-alerts", "mode": "json_array",
+     "dials": ["bug_win_en"],
+     "riders": [{"code": "DOMAIN_SHIFT", "severity": "info",
+                 "note": "alerts do daemon; dial selado p/ field-reports"}]},
+]
 
 
 def log(msg):
@@ -50,12 +74,14 @@ def embed(texts):
 
 
 def load_dials():
-    dials = []
+    dials = {}
     for mpath in glob.glob(os.path.join(SYNT, "dials", "*", "manifest.json")):
-        with open(mpath) as f:
-            m = json.load(f)
-        v = np.load(os.path.join(os.path.dirname(mpath), "axis.npz"))["v"]
-        dials.append((m, v))
+        try:
+            m = json.load(open(mpath))
+            v = np.load(os.path.join(os.path.dirname(mpath), "axis.npz"))["v"]
+            dials[m["id"]] = (m, v)
+        except Exception:
+            continue
     return dials
 
 
@@ -69,20 +95,53 @@ def spectrum(text):
     return x, h, False
 
 
-def new_lines(path, state):
+def extract_text(d):
+    return next((str(d[k]).strip() for k in TEXT_FIELDS if d.get(k)), "")
+
+
+def new_items(spec, state):
+    path = spec["path"]
     if not os.path.exists(path):
         return []
-    off = state.get(path, 0)
-    size = os.path.getsize(path)
-    if size < off:
-        off = 0
-    if size == off:
+    if spec["mode"] == "jsonl":
+        off = state.get(path, 0)
+        size = os.path.getsize(path)
+        if size < off:
+            off = 0
+        if size == off:
+            return []
+        with open(path, encoding="utf-8", errors="replace") as f:
+            f.seek(off)
+            chunk = f.read()
+            state[path] = f.tell()
+        out = []
+        for ln in chunk.splitlines():
+            if not ln.strip():
+                continue
+            try:
+                out.append(json.loads(ln))
+            except json.JSONDecodeError:
+                continue
+        return out
+    # json_array: arquivo re-escrito; dedupe por hash de item já visto
+    seen_key = f"seen:{path}"
+    seen = set(state.get(seen_key, []))
+    try:
+        data = json.load(open(path, encoding="utf-8", errors="replace"))
+    except (json.JSONDecodeError, OSError):
         return []
-    with open(path, encoding="utf-8", errors="replace") as f:
-        f.seek(off)
-        chunk = f.read()
-        state[path] = f.tell()
-    return [ln for ln in chunk.splitlines() if ln.strip()]
+    items = data if isinstance(data, list) else data.get("alerts", [])
+    fresh = []
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        h = hashlib.sha256(json.dumps(it, sort_keys=True,
+                                      ensure_ascii=False).encode()).hexdigest()
+        if h not in seen:
+            seen.add(h)
+            fresh.append(it)
+    state[seen_key] = sorted(seen)[-500:]
+    return fresh
 
 
 def main():
@@ -102,32 +161,33 @@ def main():
         n_events = n_miss = 0
         t0 = time.perf_counter()
         with open(SHADOW, "a", encoding="utf-8") as out:
-            for src in SOURCES:
-                for ln in new_lines(src, state):
-                    try:
-                        d = json.loads(ln)
-                    except json.JSONDecodeError:
-                        continue
-                    text = next((str(d[k]).strip() for k in TEXT_FIELDS
-                                 if d.get(k)), "")
+            for spec in SOURCES:
+                which = spec["dials"] or list(dials)
+                for d in new_items(spec, state):
+                    text = extract_text(d)
                     if not text:
                         continue
                     x, h, hit = spectrum(text)
                     n_events += 1
                     n_miss += (not hit)
-                    for m, v in dials:
+                    for did in which:
+                        if did not in dials:
+                            continue
+                        m, v = dials[did]
                         env = {
                             "ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
-                            "source": os.path.basename(src),
+                            "stream": spec["stream"],
+                            "source": os.path.basename(spec["path"]),
                             "input_sha256": h,
                             "declared_class": d.get("class"),
                             "axis": {"id": m["id"],
                                      "version": m["version"]},
                             "score": round(float(x @ v), 4),
-                            "riders": [{"code": "SINGLE_ENCODER",
-                                        "severity": "reverify"},
-                                       {"code": "SHADOW_MODE",
-                                        "severity": "info"}],
+                            "riders": ([{"code": "SINGLE_ENCODER",
+                                         "severity": "reverify"},
+                                        {"code": "SHADOW_MODE",
+                                         "severity": "info"}]
+                                       + spec["riders"]),
                             "governance": m["governance"],
                         }
                         out.write(json.dumps(env, ensure_ascii=False) + "\n")
@@ -135,7 +195,7 @@ def main():
         dt = (time.perf_counter() - t0) * 1e3
         if n_events:
             log(f"tick ok: {n_events} events ({n_miss} embedded, "
-                f"{n_events - n_miss} cached) · {len(dials)} dial(s) · "
+                f"{n_events - n_miss} cached) · {len(SOURCES)} fontes · "
                 f"{dt:.0f} ms")
     except Exception as e:
         log(f"tick FAILED (quiet): {type(e).__name__}: {e}")

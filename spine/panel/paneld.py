@@ -142,7 +142,9 @@ def shadow_data():
                 except json.JSONDecodeError:
                     continue
     scores = [e["score"] for e in envs if "score" in e]
-    novos = [e for e in envs if e.get("ts", "") > MARCO_FASE2]
+    f2_sources = {"field-reports.jsonl", "inbox.jsonl"}
+    novos = [e for e in envs if e.get("ts", "") > MARCO_FASE2
+             and e.get("source") in f2_sources]
     hist = [0] * 12
     if scores:
         lo, hi = min(scores), max(scores)
