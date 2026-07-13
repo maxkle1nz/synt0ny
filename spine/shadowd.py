@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""shadowd v1.1 — a espinha em modo sombra, multi-frente.
+"""shadowd v1.2 — a espinha em modo sombra, multi-frente.
 
 Streams separados por fonte, dials adequados por domínio, e leituras
 fora-de-domínio marcadas com DOMAIN_SHIFT (coleta honesta, nunca medição
@@ -13,8 +13,6 @@ import os
 import sys
 import time
 import urllib.request
-
-import numpy as np
 
 HOME = os.path.expanduser("~")
 SYNT = os.path.join(HOME, "synt0ny")
@@ -67,6 +65,7 @@ def log(msg):
 
 
 def embed(texts):
+    import numpy as np
     out = []
     for i in range(0, len(texts), 50):
         body = json.dumps({"model": ENCODER,
@@ -81,6 +80,7 @@ def embed(texts):
 
 
 def load_dials():
+    import numpy as np
     dials = {}
     for mpath in glob.glob(os.path.join(SYNT, "dials", "*", "manifest.json")):
         try:
@@ -93,6 +93,7 @@ def load_dials():
 
 
 def spectrum(text):
+    import numpy as np
     h = hashlib.sha256(f"{ENCODER}:{text}".encode()).hexdigest()
     path = os.path.join(SPECTRA, f"{h}.npy")
     if os.path.exists(path):
@@ -116,6 +117,12 @@ def _gh(path):
 def github_events(spec, state):
     """Colhe commits novos por-repo (a API de events censura payloads
     privados). 1 chamada de listagem + 1 por repo ativo desde o último tick."""
+    # 1 listagem de repos por tick estourava o G-F2b (tick <= 1 s) e o
+    # rate-limit à toa; commits não giram em 300 s — sonda a cada 30 min
+    throttle_key = f"throttle:{spec['path']}"
+    if time.time() < state.get(throttle_key, 0):
+        return []
+    state[throttle_key] = time.time() + 1800
     seen_key = f"seen:{spec['path']}"
     since_key = f"since:{spec['path']}"
     seen = set(state.get(seen_key, []))
@@ -210,16 +217,26 @@ def main():
     open(PID, "w").write(str(os.getpid()))
     try:
         state = json.load(open(STATE)) if os.path.exists(STATE) else {}
+        t0 = time.perf_counter()
+        # colhe ANTES de carregar dials: o no-op não pode pagar o import
+        # do numpy (G-F2b sela tick incremental <= 1 s)
+        harvest = []
+        for spec in SOURCES:
+            items = new_items(spec, state)
+            if items:
+                harvest.append((spec, items))
+        if not harvest:
+            json.dump(state, open(STATE, "w"))
+            return
         dials = load_dials()
         if not dials:
             log("no dials found — nothing to do")
             return
         n_events = n_miss = 0
-        t0 = time.perf_counter()
         with open(SHADOW, "a", encoding="utf-8") as out:
-            for spec in SOURCES:
+            for spec, items in harvest:
                 which = spec["dials"] or list(dials)
-                for d in new_items(spec, state):
+                for d in items:
                     text = extract_text(d)
                     if not text:
                         continue

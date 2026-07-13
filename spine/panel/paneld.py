@@ -143,8 +143,10 @@ def shadow_data():
                     continue
     scores = [e["score"] for e in envs if "score" in e]
     f2_sources = {"field-reports.jsonl", "inbox.jsonl"}
-    novos = [e for e in envs if e.get("ts", "") > MARCO_FASE2
-             and e.get("source") in f2_sources]
+    # eventos = textos únicos (o selo conta EVENTOS; cada um gera 1 envelope
+    # por dial desde o v1.1, então contar linhas dobraria)
+    novos = {e["input_sha256"] for e in envs if e.get("ts", "") > MARCO_FASE2
+             and e.get("source") in f2_sources and e.get("input_sha256")}
     hist = [0] * 12
     if scores:
         lo, hi = min(scores), max(scores)

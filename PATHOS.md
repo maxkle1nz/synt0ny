@@ -1,5 +1,17 @@
 # PATHOS — synt0ny
 
+## A régua pegou o próprio painel (2026-07-13)
+Aos 2,6 dias de sombra o painel declarou "JANELA ABERTA" (46/30) — mas
+contava ENVELOPES; o selo conta EVENTOS (23 únicos: o v1.1 dobrou envelopes
+por evento ao somar o 2º dial). Overclaim de instrumento, pego pela leitura
+estrita do selo e corrigido no dia: paneld conta sha únicos (23/30, fechada);
+adendo ex-ante sela as interpretações ANTES de qualquer rotulagem
+(spine/PREREGISTRO-FASE2-ADENDO.md, sha a930e814…); amostra-ensaio descartada
+sem rotulagem. G-F2b endurecido de verdade: no-op era 1,3 s (import numpy +
+sonda GitHub a CADA tick) → lazy import + throttle 30 min = 0,04-0,09 s.
+Janela real: 30 eventos únicos OU 2026-07-17T21:50. Operação do período:
+63+ ticks com colheita, 0 falhas, daemon-alerts acordou (71), github 185.
+
 ## O circuito (produto fechado em 2026-07-11)
 medir→servir→consumir ligado: `POST /api/read` no paneld (espectro com cache
 compartilhado + projeção nos dials + envelope v0; testado pt/en, ~80 ms);
