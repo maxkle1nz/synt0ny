@@ -1,0 +1,37 @@
+{
+ "labels": {
+  "1": "severo",
+  "2": "severo",
+  "3": "severo",
+  "4": "severo",
+  "5": "severo",
+  "6": "severo",
+  "7": "severo",
+  "8": "benigno",
+  "9": "severo",
+  "10": "severo",
+  "11": "severo",
+  "12": "severo",
+  "13": "benigno",
+  "14": "severo",
+  "15": "severo",
+  "16": "severo",
+  "17": "benigno",
+  "18": "severo",
+  "19": "severo",
+  "20": "severo",
+  "21": "benigno",
+  "22": "severo",
+  "23": "severo",
+  "24": "severo",
+  "25": "severo",
+  "26": "benigno"
+ },
+ "labeler": "blind agent opus a5d7278aedf553d20",
+ "g_f2a": {
+  "ranked_severos": 9,
+  "crono_severos": 7,
+  "random_severos": 8,
+  "passa": true
+ }
+}

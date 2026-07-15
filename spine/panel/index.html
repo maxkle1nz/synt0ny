@@ -93,9 +93,8 @@
 
 <div class="grid">
   <div class="card wide"><h2>últimos eventos observados</h2>
-    <div class="veilnote" id="veiltoggle">🙈 scores individuais velados — se
-    você será o rotulador da auditoria cega da Fase 2, mantenha assim ·
-    clique para revelar</div>
+    <div class="veilnote" id="veiltoggle">👁 scores visíveis (T0.1 — Fase 2
+    auditada e aprovada, 2026-07-15) · clique para velar</div>
     <table><thead><tr><th>quando</th><th>fonte</th><th>classe declarada</th>
     <th>score</th></tr></thead><tbody id="eventos"></tbody></table></div>
 </div>
@@ -106,7 +105,7 @@
 
 <script>
 const $=id=>document.getElementById(id);
-let veiled = localStorage.getItem("synt0ny-veil") !== "off";
+let veiled = localStorage.getItem("synt0ny-veil") === "on";
 $("veiltoggle").onclick=()=>{veiled=!veiled;
   localStorage.setItem("synt0ny-veil", veiled?"on":"off"); render(last);};
 let last=null;
@@ -159,8 +158,8 @@ function render(d){
     `<td class="${veiled?"veil":"veil off"}">${e.score==null?"—":e.score.toFixed(4)}</td></tr>`
   ).join("");
   $("veiltoggle").textContent = veiled
-    ? "🙈 scores individuais velados — se você será o rotulador da auditoria cega da Fase 2, mantenha assim · clique para revelar"
-    : "👁 scores revelados — se você olhar rankings, outro rotulador deve fazer a auditoria cega · clique para velar";
+    ? "🙈 scores velados · clique para revelar"
+    : "👁 scores visíveis (T0.1 — Fase 2 auditada e aprovada, 2026-07-15) · clique para velar";
   $("log").textContent = (d.shadowd.log_tail||[]).join("");
 }
 async function tick(){

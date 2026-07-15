@@ -1,5 +1,26 @@
 # PATHOS — synt0ny
 
+## A espinha SAIU DA SOMBRA — Fase 2 auditada e APROVADA (2026-07-15)
+Janela aberta pelo relógio de eventos na leitura estrita (36/30 únicos,
+5,0 dias, 0 ticks falhos). Amostra cega de 26 itens re-selada por rito
+(sha do mapping commitado ANTES da rotulagem); rotulador = agente CEGO
+distinto do selador (Opus, zero contexto/tools), como o selo previa.
+**G-F2a PASSOU no fio exato: top-10 ranqueado 9/10 severos vs fila
+cronológica 7/10 (gate: >= +2; random exploratório 8/10).** Honestidade:
+taxa-base severa altíssima no período (21/26) comprimiu a margem; o
+único benigno do top-10 é o flake de CI — a classe de FP conhecida (o
+dial lê tom, não verdade). G-F2b passou com evidência (0 crash-loop;
+no-op 0,04-0,09 s; escritas só em ~/.m1nd/synt0ny/). Decisão selada
+aplicada: **T0.1** — painel desvela scores por default (véu era do
+rotulador; provado no browser). Ata completa: spine/RELATORIO-FASE2.md
++ f2_mapping.json + f2_rotulos.json. Aposta do agente: direção certa,
+magnitude errada dos dois lados (subestimou a taxa-base severa).
+PENDENTE com o Max: desenho dos "alerts anotados" do T0.1 (nunca em
+arquivo do m1nd — advisory absoluto; candidato: arquivo próprio em
+~/.m1nd/synt0ny/ consumido via MCP/painel). Observação pós-auditoria:
+stream daemon-alerts infla (500 envelopes; alerts re-emitidos mutam
+hash e recontam) — candidato a dedupe semântico, fora da janela selada.
+
 ## A régua pegou o próprio painel (2026-07-13)
 Aos 2,6 dias de sombra o painel declarou "JANELA ABERTA" (46/30) — mas
 contava ENVELOPES; o selo conta EVENTOS (23 únicos: o v1.1 dobrou envelopes

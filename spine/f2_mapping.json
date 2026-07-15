@@ -1,0 +1,240 @@
+[
+ {
+  "n": 1,
+  "sha": "aa82f1dcbd0ee039c62dcf71496fea7752f305a8936870592e58d50ca42ba3e0",
+  "score": -0.026,
+  "groups": [
+   "random"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 2,
+  "sha": "dde2b3676ab5df7d926f61b8a5d68fd3364bf5ab3531ee438b2f065be5fb99ed",
+  "score": 0.0659,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 3,
+  "sha": "b78a42be29be39f7934c2f9a57ec99f8471a4c954da95cf057bdef7ca0b87a5c",
+  "score": 0.1158,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 4,
+  "sha": "3f38365f4d4cc76dc3de5ac98a823eeb7a9707781cf79a32f9782603c1af8c11",
+  "score": 0.118,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 5,
+  "sha": "556e716e12dbf68aceb826f346d41e9f79a34012d73e43de42a988aef9f5da46",
+  "score": 0.0215,
+  "groups": [
+   "random"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 6,
+  "sha": "727e9d09c21163f69713fbba1c092cd4b55b761424782fa74d5cf30d89cb3e6f",
+  "score": -0.0602,
+  "groups": [
+   "random",
+   "crono"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 7,
+  "sha": "9b8b9d00ea866861b698d5c872c31eb6e023c26502e7a1a5bc928c25646664a6",
+  "score": 0.0338,
+  "groups": [
+   "crono"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 8,
+  "sha": "a49ec3c7a6cd66a997a4c657c6a17ec4a8ac46470cb5dce797fa8d411972314c",
+  "score": 0.0344,
+  "groups": [
+   "random"
+  ],
+  "declared": "honesty"
+ },
+ {
+  "n": 9,
+  "sha": "98089dca63658240af62d44d551e1b18706f4350a8c69d1fca26adac72e1a3c1",
+  "score": 0.0257,
+  "groups": [
+   "random",
+   "crono"
+  ],
+  "declared": "memory_misdelivery"
+ },
+ {
+  "n": 10,
+  "sha": "6061cab088c78c7e5591e8079bd0fd4bf865f54335e6ba245986c82f9cd80680",
+  "score": 0.1136,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 11,
+  "sha": "1b75063cff6bee25b3fbb6de807ed57300b1deb51b517dbe0bbd769dd279e46d",
+  "score": 0.0301,
+  "groups": [
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 12,
+  "sha": "64d01e1c62da2cbc1c02b18b540a15db12959549f978b7061b179c852ecc9a93",
+  "score": 0.135,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 13,
+  "sha": "f2bdf4eff24b11aeae7975522f7fda0aa80c2de4b5a8e5a3e2e7a79dee8819e5",
+  "score": 0.0224,
+  "groups": [
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 14,
+  "sha": "e3c10ab34b1302f90f18b8ed463ab9d89c5ee802d0afc6c9246300ecc7144463",
+  "score": 0.0744,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 15,
+  "sha": "28bcdfe769a82b22e44450619814db706db8dec2af095330150be1e119760775",
+  "score": 0.0135,
+  "groups": [
+   "random"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 16,
+  "sha": "83e65aeaf0c35bca8b74e720b1ba92dfa09ed9050e29a9bd89c91311b5191ab6",
+  "score": 0.0276,
+  "groups": [
+   "random"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 17,
+  "sha": "88baddf3b7d7815a738a4de879494b8718f626108382eaf2be9803a47a3425d7",
+  "score": 0.0732,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 18,
+  "sha": "19d5752bda74b45c8f3df5b0ec982d5ec5ea57c8bcc15b32cd54c6819c896d8e",
+  "score": 0.0242,
+  "groups": [
+   "random",
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 19,
+  "sha": "958ae679438d92fbcef179683735627a30f0d2ea536854db4841012ae9d572d3",
+  "score": 0.0809,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 20,
+  "sha": "0b9bbec61364176c247a9163e2fc421492e7cfdd93ee96e54ed6f2714758611a",
+  "score": 0.0576,
+  "groups": [
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 21,
+  "sha": "756eb8a43e0333f871abdace63b71610a33596d396a3524df73524d4415c2e8c",
+  "score": 0.0393,
+  "groups": [
+   "random",
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 22,
+  "sha": "978ab870cf7eada42d6cc451cb4acb2f6d38233f79df391f5bd9fda79f4007a7",
+  "score": 0.0335,
+  "groups": [
+   "crono"
+  ],
+  "declared": "friction"
+ },
+ {
+  "n": 23,
+  "sha": "51210b494ba5cad84616e19eabc21200f36cbe14a8fb8b441c26fdeb9b3e6c99",
+  "score": 0.0967,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 24,
+  "sha": "e800e3aad09b69e193c8f674c49dae24bab0cdcebb90e9fe63ec5d8b1a6ad8fb",
+  "score": 0.1268,
+  "groups": [
+   "ranked"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 25,
+  "sha": "fadcdb7333dd8621dd11817aa637ab32ab4b712c9a07c93262f5d16d0b7dd6da",
+  "score": 0.0585,
+  "groups": [
+   "random"
+  ],
+  "declared": "bug"
+ },
+ {
+  "n": 26,
+  "sha": "e5f331ed938f3ee250ed6586260b34aa121b7fa52c59205eb6416a0e79309ceb",
+  "score": -0.0984,
+  "groups": [
+   "crono"
+  ],
+  "declared": "win"
+ }
+]
