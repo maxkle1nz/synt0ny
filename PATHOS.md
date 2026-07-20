@@ -1,5 +1,23 @@
 # PATHOS — synt0ny
 
+## Estratégia pós-F2 ratificada com o Max (2026-07-20)
+Sessão de leitura fria do que a F2 significa. Três camadas fixadas:
+(1) PROVADO = o instrumento sobre dados do m1nd (T0 conquistado);
+(2) NÃO provado = o m1nd consumindo a leitura em fluxo real + efeito a
+jusante (contrafactual tipo A/B do packet frio) — é o T1;
+(3) lei do porte = método sim, artefato nunca (réguas re-seladas por
+domínio/idioma). Pergunta do dono "estamos reinventando a roda?"
+respondida com mapa de donors: componentes JÁ são rodas prontas
+(bge-m3, cosseno, sklearn); original fino = firmamento + rito de
+certificação + constituição advisory. Donors declarados para a fila:
+SetFit (upgrade de cabeça das réguas), bge-reranker + FastEmbed/ONNX
+(T2 — A/B SELADO donor-vs-dois-escores ANTES de construir; se o donor
+vencer, adota-se), mecanismo de dedupe do mem0 (ler antes de escrever
+o De-Echo), cleanlab (qualidade de rótulos do Foundry). Alternativa
+LLM-API (~centavos/mês) nomeada e rejeitada pelos motivos do dono:
+privacidade dos paths locais, 24/7 sem rede, custo marginal zero.
+README reescrito do dia-1 para o estado real (espinha + F2 + método).
+
 ## A espinha SAIU DA SOMBRA — Fase 2 auditada e APROVADA (2026-07-15)
 Janela aberta pelo relógio de eventos na leitura estrita (36/30 únicos,
 5,0 dias, 0 ticks falhos). Amostra cega de 26 itens re-selada por rito
