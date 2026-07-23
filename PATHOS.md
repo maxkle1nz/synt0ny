@@ -1,7 +1,7 @@
 # PATHOS — synt0ny
 
 ## Janela 2 selada + T0.1 pleno no ar (2026-07-23, mesma sessão do incidente)
-Decisão delegada pelo Max ("veja você o que é melhor") e executada:
+Decisão delegada pelo dono e executada:
 (1) JANELA 2 SELADA (spine/PREREGISTRO-JANELA2.md, sha f78777c3…):
 herda F2+adendo verbatim (mesmos gates, seed, cegueira, rotulador
 distinto do selador), marco 2026-07-23T04:00, e G-J2b ganha a cláusula
@@ -16,7 +16,7 @@ wire: TONE_NOT_TRUTH. Zero escrita fora de ~/.m1nd/synt0ny/ — o
 desenho "arquivo próprio consumido por pull" dispensou tocar alerts
 do m1nd.
 (3) T1 DECLINADO por ora: BIG no repo do m1nd → exige campanha própria
-com verdict askGOD e Max presente. Fica como próxima fronteira.
+com verdict de oráculo e o dono presente. Fica como próxima fronteira.
 
 ## Incidente 18-23/07: a espinha ficou muda 3 dias — achado e consertado (2026-07-23)
 Três causas COMPOSTAS, descobertas na pergunta "que ponto estamos":
@@ -41,7 +41,7 @@ janela 2 de auditoria (marco novo — o card "fase 2" do painel ainda
 conta do selo velho de 10/07); decisão dos alerts anotados (T0.1
 pleno); T1 da fronteira.
 
-## Estratégia pós-F2 ratificada com o Max (2026-07-20)
+## Estratégia pós-F2 ratificada com o dono (2026-07-20)
 Sessão de leitura fria do que a F2 significa. Três camadas fixadas:
 (1) PROVADO = o instrumento sobre dados do m1nd (T0 conquistado);
 (2) NÃO provado = o m1nd consumindo a leitura em fluxo real + efeito a
@@ -55,8 +55,8 @@ SetFit (upgrade de cabeça das réguas), bge-reranker + FastEmbed/ONNX
 (T2 — A/B SELADO donor-vs-dois-escores ANTES de construir; se o donor
 vencer, adota-se), mecanismo de dedupe do mem0 (ler antes de escrever
 o De-Echo), cleanlab (qualidade de rótulos do Foundry). Alternativa
-LLM-API (~centavos/mês) nomeada e rejeitada pelos motivos do dono:
-privacidade dos paths locais, 24/7 sem rede, custo marginal zero.
+LLM-API (~centavos/mês) nomeada e rejeitada: local-first por princípio —
+24/7 sem rede, custo marginal zero.
 README reescrito do dia-1 para o estado real (espinha + F2 + método).
 
 ## A espinha SAIU DA SOMBRA — Fase 2 auditada e APROVADA (2026-07-15)
@@ -74,7 +74,7 @@ aplicada: **T0.1** — painel desvela scores por default (véu era do
 rotulador; provado no browser). Ata completa: spine/RELATORIO-FASE2.md
 + f2_mapping.json + f2_rotulos.json. Aposta do agente: direção certa,
 magnitude errada dos dois lados (subestimou a taxa-base severa).
-PENDENTE com o Max: desenho dos "alerts anotados" do T0.1 (nunca em
+PENDENTE com o dono: desenho dos "alerts anotados" do T0.1 (nunca em
 arquivo do m1nd — advisory absoluto; candidato: arquivo próprio em
 ~/.m1nd/synt0ny/ consumido via MCP/painel). Observação pós-auditoria:
 stream daemon-alerts infla (500 envelopes; alerts re-emitidos mutam
@@ -151,7 +151,7 @@ o método é o produto tanto quanto os resultados.
 - Refutados: transmutação linear entre corpos distintos (espelhar amar ≠
   odiar); "uma frequência por palavra" (PCA-1: 0% de recuperação); dissonância
   física de antônimos.
-- Exp 9 (paradigma dos irmãos, desenho fable + verdict fugu CHANGE aplicado):
+- Exp 9 (paradigma dos irmãos, desenho + verdict de oráculo cross-vendor, CHANGE aplicado):
   transmutação FALHOU até com corpo idêntico (ida 4/12, volta 3/12 vs gate 9;
   supletivos 0/4 → o sinal fraco que existe é geometria de sufixo). Mas o
   vetor-tempo carrega sinal real (7/24 vs null p95 = 3). CONCLUSÃO DA TRILOGIA
@@ -170,14 +170,14 @@ o método é o produto tanto quanto os resultados.
 2. Controles adversariais sempre: parônimos (forma), null matched (500
    direções de pares aleatórios), leave-one-out, espaço primário declarado +
    controle de atribuição (centrado vs purificado).
-3. askGOD no DESENHO dos gates — a única rodada sem oráculo (Exp 6) saiu com
+3. Oráculo externo no DESENHO dos gates — a única rodada sem ele (Exp 6) saiu com
    gate-teto invencível. Lição medida, não opinião.
 4. Apostas do agente registradas por experimento. Viés conhecido e reincidente:
    acerta a EXISTÊNCIA de eixos, superestima magnitudes e saltos (4 derrotas
    nos antônimos + Exp 8). No Exp 9 a calibração "para baixo" AINDA superestimou
    (apostou 8-7-3-1, veio 4-3-2-0): calibrar operações de ESCRITA perto do null,
    não perto da vontade.
-5. Verdict cross-vendor antes do selo endurece o teste: o CHANGE do fugu no
+5. Verdict cross-vendor antes do selo endurece o teste: o CHANGE do segundo oráculo no
    Exp 9 (null empírico de 300 direções, falsificador supletivo, margem por
    item) foi o que permitiu separar "sinal real fraco" de "transmutação" — sem
    ele, 7/24 contra um v_rand único teria dado leitura confusa.
@@ -190,9 +190,6 @@ o método é o produto tanto quanto os resultados.
   régua-por-par entrar.
 - Eixo da intenção zero-shot: forte no polo ⊖, morno no ⊕ (medido na CLI).
 - Escala: tudo validado em 227 verbos pt; substantivos/frases = extrapolação.
-- Voz fugu (Sakana): o MCP do DEXT3R morto (`~/.codex/config.toml:406`, porta
-  9200) derruba o startup — FIX PROVADO (Exp 9): `codex exec -c
-  'mcp_servers={}'` anula sem tocar no config; WAF exige VPN ligada.
 
 - Exp 10 (a ponte, verdict fugu CHANGE aplicado): o eixo da intenção TRANSFERE
   para frases — 100% em 52 frases (AUC 1.0; null matched p95 80,8%), 14/14 em
@@ -205,8 +202,8 @@ o método é o produto tanto quanto os resultados.
 
 ## Próximos passos (fila real, em ordem)
 0. [EXECUTADO 2026-07-10] Exp 11 "o atlas" — 83.917 lemas × 2 encoders
-   (A bge-m3/M4, B qwen3-embedding:8b/GENESIS RX 7900), panel duplo no
-   desenho (fable + fugu, ambos CHANGE aplicados). PLACAR:
+   (A bge-m3/M4, B qwen3-embedding:8b numa segunda máquina local RX 7900),
+   panel duplo de oráculos no desenho (ambos CHANGE aplicados). PLACAR:
    · E1 gate (v12 >= 0,75): FALHOU em A (0,685) e B (0,678) → "não
      estabelecido". DESCOBERTA REPLICADA: eixo v_tep (12 relações held-out
      do padrão-ouro) fez 0,791/0,799 — cruza o limiar NOS DOIS. O eixo
@@ -237,7 +234,7 @@ o método é o produto tanto quanto os resultados.
    (sem mudança de métrica).
 2. Sonda de batismo maior: ~24 adversariais para nomear o mostrador
    (valência do evento vs tipo lexical) com poder estatístico.
-3. Régua por par (proposta fable): regressão S_ij ~ T_ij, resíduo como
+3. Régua por par (proposta de oráculo): regressão S_ij ~ T_ij, resíduo como
    similaridade purificada — substitui a purificação vetorial sem mutilar.
 4. "Dicionário vs diário" — frames de Fillmore mensuráveis (verbo ressoa com
    seus papéis típicos?) vs conhecimento episódico (ausente por construção).
@@ -249,7 +246,7 @@ o método é o produto tanto quanto os resultados.
 ## Documentos canônicos
 `docs/PRD.md` (visão, requisitos, métricas, riscos, roadmap, governança) e
 `docs/UML.md` (componentes, sequências, ciclo de vida de régua) — autoria
-assento Fable, 2026-07-11, baselined nos Exp 1-12 + conselho de 4 vozes
+do assento de escrita, 2026-07-11, baselined nos Exp 1-12 + conselho de 4 vozes
 (`docs/FRONTEIRA-M1ND.md`). Mudança de arquitetura/escopo atualiza PRD/UML
 no mesmo burst (doc-gate).
 
