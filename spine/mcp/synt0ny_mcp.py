@@ -9,6 +9,7 @@ import sys
 import urllib.request
 
 PANEL = "http://localhost:1341/api/read"
+PANEL_QUEUE = "http://localhost:1341/api/queue"
 
 TOOL = {
     "name": "synt0ny_read",
@@ -28,6 +29,26 @@ TOOL = {
                       "description": "IDs dos dials (omitir = todos)"},
         },
         "required": ["text"],
+    },
+}
+
+TOOL_QUEUE = {
+    "name": "synt0ny_queue",
+    "description": (
+        "Fila de atenção advisory da espinha (T0.1, caso provado na "
+        "auditoria cega F2: top-10 ranqueado 9/10 severos vs 7/10 da fila "
+        "cronológica): field-reports + inbox do m1nd ranqueados por "
+        "severidade (dial bug_win_en). Ordena a atenção, nunca decide; "
+        "lê TOM, não verdade (flake dramático ranqueia alto). "
+        "Retorna items com score, texto e riders."),
+    "inputSchema": {
+        "type": "object",
+        "properties": {
+            "days": {"type": "integer",
+                     "description": "Janela em dias (default 7, máx 90)"},
+            "top": {"type": "integer",
+                    "description": "Quantos itens (default 10, máx 50)"},
+        },
     },
 }
 
@@ -68,12 +89,20 @@ def main():
                      "serverInfo": {"name": "synt0ny",
                                     "version": "1.0.0"}}, id_=mid)
             elif method == "tools/list":
-                rpc({"tools": [TOOL]}, id_=mid)
+                rpc({"tools": [TOOL, TOOL_QUEUE]}, id_=mid)
             elif method == "tools/call":
-                if m["params"]["name"] != "synt0ny_read":
+                name = m["params"]["name"]
+                args = m["params"].get("arguments", {})
+                if name == "synt0ny_read":
+                    out = call_read(args)
+                elif name == "synt0ny_queue":
+                    url = (f"{PANEL_QUEUE}?days={int(args.get('days', 7))}"
+                           f"&top={int(args.get('top', 10))}")
+                    with urllib.request.urlopen(url, timeout=30) as r:
+                        out = json.loads(r.read())
+                else:
                     rpc(error="tool desconhecida", id_=mid)
                     continue
-                out = call_read(m["params"].get("arguments", {}))
                 rpc({"content": [{"type": "text",
                                   "text": json.dumps(out, indent=1,
                                                      ensure_ascii=False)}]},

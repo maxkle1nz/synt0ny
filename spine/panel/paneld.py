@@ -22,7 +22,7 @@ ROOT = os.path.join(HOME, ".m1nd", "synt0ny")
 SPECTRA = os.path.join(ROOT, "spectra")
 DIALS = os.path.join(HOME, "synt0ny", "dials")
 HERE = os.path.dirname(os.path.abspath(__file__))
-MARCO_FASE2 = "2026-07-10T21:50:00"
+MARCO_JANELA = "2026-07-23T04:00:00"
 PORT = 1341
 ENCODER = "bge-m3"
 MAX_TEXT = 20000
@@ -145,7 +145,7 @@ def shadow_data():
     f2_sources = {"field-reports.jsonl", "inbox.jsonl"}
     # eventos = textos únicos (o selo conta EVENTOS; cada um gera 1 envelope
     # por dial desde o v1.1, então contar linhas dobraria)
-    novos = {e["input_sha256"] for e in envs if e.get("ts", "") > MARCO_FASE2
+    novos = {e["input_sha256"] for e in envs if e.get("ts", "") > MARCO_JANELA
              and e.get("source") in f2_sources and e.get("input_sha256")}
     hist = [0] * 12
     if scores:
@@ -192,12 +192,66 @@ def dials_list():
 
 
 def fase2_status(novos):
-    t0 = time.mktime(time.strptime(MARCO_FASE2, "%Y-%m-%dT%H:%M:%S"))
+    t0 = time.mktime(time.strptime(MARCO_JANELA, "%Y-%m-%dT%H:%M:%S"))
     dias = (time.time() - t0) / 86400
     return {"dias": round(dias, 1), "eventos_novos": novos,
             "janela_dias": 7, "janela_eventos": 30,
             "pronta": dias >= 7 or novos >= 30,
             "progresso": min(1.0, max(dias / 7, novos / 30))}
+
+
+def attention_queue(days=7, top=10):
+    """T0.1 — fila de atenção advisory sobre o caso PROVADO (F2):
+    field-reports + inbox ranqueados por bug_win_en. Ordena, não julga."""
+    txt = {}
+    for fname in ("field-reports.jsonl", "inbox.jsonl"):
+        p = os.path.join(HOME, ".m1nd", fname)
+        if not os.path.exists(p):
+            continue
+        with open(p, encoding="utf-8", errors="replace") as f:
+            for ln in f:
+                try:
+                    w = json.loads(ln).get("what", "").strip()
+                except (json.JSONDecodeError, AttributeError):
+                    continue
+                if w:
+                    h = hashlib.sha256(
+                        f"{ENCODER}:{w}".encode()).hexdigest()
+                    txt[h] = w
+    cutoff = time.strftime("%Y-%m-%dT%H:%M:%S",
+                           time.localtime(time.time() - days * 86400))
+    best = {}
+    path = os.path.join(ROOT, "shadow.jsonl")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8", errors="replace") as f:
+            for ln in f:
+                try:
+                    e = json.loads(ln)
+                except json.JSONDecodeError:
+                    continue
+                if (e.get("ts", "") >= cutoff
+                        and e.get("source") in ("field-reports.jsonl",
+                                                "inbox.jsonl")
+                        and e.get("axis", {}).get("id") == "bug_win_en"
+                        and e.get("input_sha256") in txt):
+                    sha = e["input_sha256"]
+                    if sha not in best or e["score"] > best[sha]["score"]:
+                        best[sha] = e
+    fila = sorted(best.values(), key=lambda e: -e["score"])[:top]
+    return {
+        "window_days": days,
+        "governance": {"mode": "advisory",
+                       "note": "ordena a atenção; nunca decide"},
+        "riders": [{"code": "SINGLE_ENCODER", "severity": "reverify"},
+                   {"code": "TONE_NOT_TRUTH",
+                    "note": "lê tom, não verdade — flake dramático "
+                            "ranqueia alto (classe FP da F2)"}],
+        "items": [{"ts": e.get("ts", ""), "score": e["score"],
+                   "declared": e.get("declared_class"),
+                   "sha12": e["input_sha256"][:12],
+                   "text": txt[e["input_sha256"]][:240]}
+                  for e in fila],
+    }
 
 
 class H(BaseHTTPRequestHandler):
@@ -221,9 +275,18 @@ class H(BaseHTTPRequestHandler):
                 "shadow": sh,
                 "dials": dials_list(),
                 "fase2": fase2_status(sh["novos_fase2"]),
+                "queue": attention_queue(top=8),
             }
             self._send(200, "application/json",
                        json.dumps(payload, ensure_ascii=False).encode())
+        elif self.path.startswith("/api/queue"):
+            from urllib.parse import parse_qs, urlparse
+            q = parse_qs(urlparse(self.path).query)
+            days = min(90, max(1, int(q.get("days", ["7"])[0])))
+            top = min(50, max(1, int(q.get("top", ["10"])[0])))
+            self._send(200, "application/json",
+                       json.dumps(attention_queue(days, top),
+                                  ensure_ascii=False).encode())
         elif self.path in ("/", "/index.html"):
             with open(os.path.join(HERE, "index.html"), "rb") as f:
                 self._send(200, "text/html; charset=utf-8", f.read())

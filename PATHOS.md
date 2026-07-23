@@ -1,5 +1,23 @@
 # PATHOS — synt0ny
 
+## Janela 2 selada + T0.1 pleno no ar (2026-07-23, mesma sessão do incidente)
+Decisão delegada pelo Max ("veja você o que é melhor") e executada:
+(1) JANELA 2 SELADA (spine/PREREGISTRO-JANELA2.md, sha f78777c3…):
+herda F2+adendo verbatim (mesmos gates, seed, cegueira, rotulador
+distinto do selador), marco 2026-07-23T04:00, e G-J2b ganha a cláusula
+do incidente — sem silêncio > 12 h com máquina ligada. Aposta: ranked
+8-9/10 vs crono 5-6/10 com taxa-base 60-70%. Painel rege pelo marco
+novo (card "janela 2 · auditoria contínua").
+(2) T0.1 PLENO: fila de atenção advisory sobre o caso PROVADO
+(field-reports+inbox por bug_win_en) — GET /api/queue no paneld
+(days/top), card no painel (provado no browser), e 2ª tool MCP
+synt0ny_queue (smoke ok: tools/list + call). Rider novo e honesto no
+wire: TONE_NOT_TRUTH. Zero escrita fora de ~/.m1nd/synt0ny/ — o
+desenho "arquivo próprio consumido por pull" dispensou tocar alerts
+do m1nd.
+(3) T1 DECLINADO por ora: BIG no repo do m1nd → exige campanha própria
+com verdict askGOD e Max presente. Fica como próxima fronteira.
+
 ## Incidente 18-23/07: a espinha ficou muda 3 dias — achado e consertado (2026-07-23)
 Três causas COMPOSTAS, descobertas na pergunta "que ponto estamos":
 (1) o daemon do m1nd clona o MESMO alert com metadados mutantes
