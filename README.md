@@ -1,96 +1,72 @@
 # synt0ny
 
-Laboratório de geometria semântica local + **a espinha**: um motor advisory
-de discernimento que lê fluxos de texto com embeddings locais (Ollama,
-`bge-m3`) e ordena a atenção de quem opera — sem LLM no caminho quente,
-sem rede, sem nunca decidir nada sozinho.
+A local lab for the geometry of meaning, and an advisory engine built from what survived it. Reads text with local embeddings, orders an operator's attention, and never decides anything.
 
-Nasceu em 2026-07-10 de uma conversa sobre matrizes e LLMs. As hipóteses
-especulativas morreram nos primeiros pré-registros (estão no `lab/`, com
-número); o que sobreviveu aos gates virou instrumento. Em cinco dias a
-campanha foi da primeira medição a uma auditoria cega de produção aprovada.
+## What this is
 
-## O que está provado (cada número tem selo antes dos dados e laudo)
+Two things that grew into one. A **lab** that measures the real structure of meaning inside local embeddings (Ollama, `bge-m3`) under a pre-registration protocol. And **the spine** — an advisory engine that reads streams of text and ranks what an operator should look at first. No LLM in the hot path. No network. It never decides, promotes, or blocks.
 
-- **Firmamento** (Exp 4): 31,4% da variância do espectro `bge-m3` é forma
-  ortográfica, removível por regressão de 50 eixos de trigrama; parônimos
-  (casar/caçar) deixam de ressoar (d 3,74 → −1,85) e o sentido sobrevive.
-- **Eixo da intenção** (Exp 5): direção única de 12 pares de antônimos,
-  12/12 no leave-one-out, ortogonal ao eixo do tempo (cos −0,01, Exp 6).
-- **Dial `bug_win_en`** (Exp 13): AUC 0,853 separando bug↔win em
-  field-reports reais, acima do null matched.
-- **Fase 2 — produção, auditoria cega pré-registrada** (2026-07-15): após
-  5 dias de sombra autônoma (0 ticks falhos), o top-10 ranqueado pelo dial
-  continha **9/10 reports severos vs 7/10 da fila cronológica** (gate de
-  margem +2 vencido no fio; rotulador cego distinto do selador; ata em
-  `spine/RELATORIO-FASE2.md`).
-- **Operação**: tick de rotina 0,04–0,09 s; caminho quente ~56,6 milhões
-  de vezes mais barato que consultar um LLM por leitura.
-- **Refutados e publicados** (honestidade com número): transmutação de
-  atributos (Exp 5/6/9 — atributos são legíveis, não escrevíveis),
-  previsão de risco de commit (Exp 14), dial feat↔fix para certificação
-  (Exp 15, AUC 0,719 < gate 0,80).
+It started 2026-07-10 as a conversation about matrices and LLMs. The speculative hypotheses died in the first pre-registrations — they are still in `lab/`, numbered, with their seals. What passed the gates became an instrument. In five days the work went from the first measurement to an approved blind production audit.
 
-## O método é o produto
+The method is the product. Every measurement follows the rite: a pre-registration sealed with SHA-256 **before** the data, an empirical matched null, leave-one-out, gates and a stopping rule written in advance, the agent's bet recorded, and every refutation committed with the same weight as a win.
 
-Toda medição segue o rito: pré-registro selado (SHA-256 **antes** dos
-dados), null matched empírico, leave-one-out, gates e regra de parada
-escritos de antemão, aposta do agente registrada, refutação commitada com
-o mesmo destaque da vitória. Régua sem laudo não existe: cada dial carrega
-manifest com certificação, bula e governança.
+## Status — honest
 
-## Constituição (advisory absoluto)
+**Proven** (each carries a seal dated before the data, and a written report):
 
-Mostradores **leem, nunca escrevem** — não decidem, não promovem, não
-bloqueiam; riders no máximo `reverify`; nenhuma escrita fora de
-`~/.m1nd/synt0ny/`. Fundação dupla e independente: a trilogia experimental
-da synt0ny (atributos são direções legíveis, não operações de escrita) e a
-constituição do m1nd ("a letter cannot color the map").
+- **Firmament** (Exp 4): 31.4% of the `bge-m3` spectrum's variance is orthographic form, removable by regressing out 50 trigram axes. Paronyms (*casar*/*caçar*) stop resonating (d 3.74 → −1.85) and the meaning survives.
+- **Intent axis** (Exp 5): one direction drawn from 12 antonym pairs, 12/12 on leave-one-out, orthogonal to the time axis (cos −0.01, Exp 6).
+- **Dial `bug_win_en`** (Exp 13): AUC 0.853 separating bug↔win in real field reports, above the matched null (0.747). Ground truth: 97 reports labeled by 53 agents.
+- **Dial `valencia_pt`**: 12/12 leave-one-out (Exp 5), the axis carries to phrases (100% on 52 phrases, 14/14 on unseen vocabulary — Exp 10), and it holds in production — 93.2% accuracy, AUC 0.979 on 500 real customer reviews (Exp 12).
+- **Phase 2 — blind, pre-registered production audit** (2026-07-15): after 5 days of autonomous shadow (0 failed ticks), the dial-ranked top-10 held **9/10 severe reports against 7/10 for the chronological queue** — the +2 margin gate cleared on the wire. The blind labeler was a separate agent from the one who sealed the sample. Minutes: `spine/RELATORIO-FASE2.md`.
+- **Operation**: a routine tick costs 0.04–0.09s; the hot path is roughly 56.6 million times cheaper than asking an LLM per read.
 
-## Anatomia
+**Refuted, and published with the same prominence** (honesty carries a number):
+
+- Attribute transmutation (Exp 5 / 6 / 9): attributes are *readable* directions, not *writable* operations. Reflecting "love" does not produce "hate."
+- Commit-risk prediction (Exp 14): AUC 0.439. Dead.
+- A `feat↔fix` dial for certification (Exp 15): AUC 0.719, under the 0.80 gate. The signal is real; it does not clear the bar.
+
+**Where it stopped.** T0 — the advisory spine running in shadow over m1nd's exhaust — is proven. T1–T3 are designed, not built (see `docs/FRONTEIRA-M1ND.md`). And the production audit was won once, on the exact edge of its gate; composite confidence is meant to come from the windows that follow, which the rite re-audits for free.
+
+**Known limits, stated plainly:**
+
+- The dial reads **tone, not truth**. A declared CI flake reached the audit's top-10 because it *sounds* severe. That false-positive class is characterized, not hidden.
+- Single encoder in the hot path (every read carries a `SINGLE_ENCODER` rider). Promoting a finding to "geometry of the language" needs a second instrument.
+- Linear purification is aggressive: it separates paronyms but mutilates pairs whose legitimate similarity runs parallel to spelling (inflections — Exp 6).
+- Validated on 227 Portuguese verbs; nouns and phrases are extrapolation until re-sealed.
+
+## The constitution
+
+Dials **read, never write**. They do not decide, promote, or block; a rider's strongest effect is `reverify`; nothing is written outside `~/.m1nd/synt0ny/`. The rule rests on two independent foundations: synt0ny's own experimental trilogy (attributes are readable directions, not write operations) and m1nd's constitution — *a letter cannot color the map*.
+
+## Run it
+
+The tool needs Python with `numpy` and a local Ollama serving `bge-m3`. The first run builds and caches the spectra.
 
 ```
-dials/    réguas certificadas (axis.npz + manifest com laudo e bula)
-spine/    a espinha: shadowd (watcher launchd, 6 frentes), panel (:1341),
-          mcp (tool synt0ny_read), hooks, pré-registros e atas da Fase 2
-lab/      experimentos 1–15: pré-registros selados, resultados, dados
-docs/     PRD, UML, FRONTEIRA-M1ND (fila T0–T3 do conselho de 4 vozes)
+python3 synt0ny.py buscar <verb>          # neighbors by resonance (zero-shot)
+python3 synt0ny.py intencao <verb> ...    # position on the ⊖ dissipation / accrual ⊕ axis
+python3 synt0ny.py eixo                    # the extremes of the axis in the bank
 ```
 
-## Uso
+Words outside the bank work zero-shot. The spine runs as a launchd job (`com.kle1nz.synt0ny-shadowd`, 5-minute tick, fail-quiet); a health panel lives at `127.0.0.1:1341` (`com.kle1nz.synt0ny-panel`). Agents read the engine through MCP (the `synt0ny_read` tool) or `POST /api/read`.
 
-```
-venv/bin/python3 synt0ny.py buscar <verbo>       # vizinhos por ressonância
-venv/bin/python3 synt0ny.py intencao <verbo>...  # posição no eixo ⊖/⊕
-venv/bin/python3 synt0ny.py eixo                 # extremos do eixo no banco
-```
+The numbered experiments in `lab/`, `atlas/`, and `spine/` are the living record — pre-registration, code, and results side by side. The dials in `dials/` ship as `axis.npz` plus a manifest carrying their certification and their `bula` (the limits label).
 
-Requer Ollama local com `bge-m3`. Palavras fora do banco funcionam
-(zero-shot). A espinha roda por launchd (`com.kle1nz.synt0ny-shadowd`,
-tick 5 min, fail-quiet) e o painel de saúde vive em `127.0.0.1:1341`
-(`com.kle1nz.synt0ny-panel`). Agentes leem o motor via MCP
-(`synt0ny_read`) ou `POST /api/read`.
+## Continue from here
 
-## Fronteira
+MIT — see `LICENSE`. Fork it. The one rule that does not bend: seal before you measure, and report every failure with a number.
 
-T0 (espinha advisory em sombra sobre o exausto do m1nd) está provado.
-T1–T3 — higiene de memória, recall de dois escores, vigia de delegação,
-Reflex Foundry — estão desenhados em `docs/FRONTEIRA-M1ND.md`. Regra
-reuse-first declarada: donors maduros (SetFit, bge-reranker, FastEmbed,
-cleanlab, mecanismo de dedupe do mem0) entram em A/B selado contra o que
-construímos; se o donor vencer com número, adota-se o donor.
+The next attacks, reading the code:
 
-## Limites conhecidos (honestidade de laboratório)
+- **T1 — the downstream test.** T0 proved the instrument reads m1nd's exhaust. T1 is the counterfactual: does the reading actually change what happens next? That is the A/B the frontier doc is waiting on.
+- **Break the single-encoder ceiling.** Every hot-path read is one encoder by declaration. A second instrument is what turns a dial reading into a claim about the language.
+- **Reuse-first, honestly.** The frontier names its own donors — SetFit, bge-reranker, FastEmbed, cleanlab, mem0's dedupe. Each enters a sealed A/B against what's here. If the donor wins with a number, adopt the donor.
 
-- O dial lê **tom, não verdade**: um flake de CI declarado entrou no
-  top-10 da auditoria porque *soa* severo. Classe de FP caracterizada.
-- Single encoder no caminho quente (rider `SINGLE_ENCODER` em toda
-  leitura); a regra multi-instrumento vale para promover achado a
-  "geometria da língua".
-- Uma auditoria de produção vencida, no fio exato do gate. Confiança
-  composta vem das janelas seguintes — o rito re-audita de graça.
-- A purificação linear é agressiva: separa parônimos, mas mutila pares
-  cuja semelhança legítima corre paralela à forma (flexões — Exp 6).
-- O eixo da intenção separa polaridade; NÃO transmuta (refletir "amar"
-  não produz "odiar" — Exp 5). Atributos são direções; identidades são
-  regiões.
+---
+<p align="center">
+  <img src="assets/deviance-prism-icon.png" width="44" alt="DEViance Intelligence">
+  <br>
+  <sub>A <b>DEViance Intelligence</b> prototype — <i>beyond the edge</i> · by <a href="https://github.com/maxkle1nz">Max Kle1nz</a></sub>
+</p>
