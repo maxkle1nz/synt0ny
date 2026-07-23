@@ -110,7 +110,7 @@ def shadowd_status():
     out = {"loaded": False, "last_exit": None, "last_tick": None,
            "tick_age_s": None, "log_tail": []}
     try:
-        r = subprocess.run(["launchctl", "list", "com.kle1nz.synt0ny-shadowd"],
+        r = subprocess.run(["launchctl", "list", "com.synt0ny-shadowd"],
                            capture_output=True, text=True, timeout=5)
         if r.returncode == 0:
             out["loaded"] = True

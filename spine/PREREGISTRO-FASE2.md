@@ -4,7 +4,7 @@ dado de sombra acumular. A sombra nasce sabendo como será julgada.
 
 ## O que está instalado (T0, estado no selo)
 - Dial certificado: bug_win_en v1.0.0 (laudo Exp 13: AUC 0,853; bula anexa).
-- shadowd.py via launchd com.kle1nz.synt0ny-shadowd, tick 300 s, advisory
+- shadowd.py via launchd com.synt0ny-shadowd, tick 300 s, advisory
   (shadow.jsonl em ~/.m1nd/synt0ny/; NUNCA escreve em arquivo do m1nd).
 - Smoke: backlog de 100 eventos em 7,5 s; tick incremental no-op silencioso;
   envelopes v0 com governança no wire.

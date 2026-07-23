@@ -196,7 +196,7 @@ def main():
     res["m1nd"] = evaluate("m1nd (GATE)", os.path.expanduser("~/m1nd"),
                            v, rng, gate=True)
     for name, path in (("l00p", "~/l00p"), ("synt0ny", "~/synt0ny"),
-                       ("cherry-IT", "~/CHERRYBUBBLES/Cherrybubbles1")):
+                       ("it-corpus", "~/it-corpus")):
         res[name] = evaluate(name, os.path.expanduser(path), v, rng)
     json.dump(res, open(os.path.join(DIR, "results14.json"), "w"), indent=1)
     print("\nresults14.json gravado.")

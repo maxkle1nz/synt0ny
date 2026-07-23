@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.kle1nz.synt0ny-panel-open</string>
+    <string>com.synt0ny-panel-open</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/sh</string>

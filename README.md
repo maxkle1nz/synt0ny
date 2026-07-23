@@ -50,7 +50,7 @@ python3 synt0ny.py intencao <verb> ...    # position on the ⊖ dissipation / ac
 python3 synt0ny.py eixo                    # the extremes of the axis in the bank
 ```
 
-Words outside the bank work zero-shot. The spine runs as a launchd job (`com.kle1nz.synt0ny-shadowd`, 5-minute tick, fail-quiet); a health panel lives at `127.0.0.1:1341` (`com.kle1nz.synt0ny-panel`). Agents read the engine through MCP (the `synt0ny_read` tool) or `POST /api/read`.
+Words outside the bank work zero-shot. The spine runs as a launchd job (`com.synt0ny-shadowd`, 5-minute tick, fail-quiet); a health panel lives at `127.0.0.1:1341` (`com.synt0ny-panel`). Agents read the engine through MCP (the `synt0ny_read` tool) or `POST /api/read`.
 
 The numbered experiments in `lab/`, `atlas/`, and `spine/` are the living record — pre-registration, code, and results side by side. The dials in `dials/` ship as `axis.npz` plus a manifest carrying their certification and their `bula` (the limits label).
 

@@ -18,7 +18,7 @@
   "proxy": "invi\u00e1vel",
   "base_rate": 0.0
  },
- "cherry-IT": {
+ "it-corpus": {
   "n": 243,
   "k_next": 10,
   "base_rate": 0.3868312757201646,

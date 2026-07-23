@@ -40,7 +40,7 @@ da história (< 20 sucessores) são EXCLUÍDOS do cômputo.
 ## Materiais
 - Corpus do gate: ~/m1nd, 800 commits não-merge (mensagens em inglês).
 - Estratos exploratórios sem gate: l00p (38), synt0ny (22) e — transferência
-  de idioma — Cherry (459, mensagens em italiano; régua EN aplicada a IT
+  de idioma — an IT corpus (459, mensagens em italiano; régua EN aplicada a IT
   mede transfer de graça, rotulado como exploração).
 - Sinal: SUBJECT do commit apenas (1ª linha), embeddings bge-m3 crus L2.
 - Régua: v = unit(mean(12 risky) − mean(12 cosmetic)), exemplos congelados
@@ -60,7 +60,7 @@ S1 (sensibilidade-confundidor): correlação parcial de Spearman entre
 
 ## Aposta do agente
 G1: AUC 0,68 (passa raspando). G2: passa (~2× a base). S1: mantém sinal mas
-enfraquece (~30% de queda). Cherry-IT: AUC ~0,60 (transfer parcial).
+enfraquece (~30% de queda). IT-corpus: AUC ~0,60 (transfer parcial).
 
 ## Regra de parada
 Uma rodada. Sem métrica nova após os números.
