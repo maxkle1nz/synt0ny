@@ -125,7 +125,8 @@ def github_events(spec, state):
     state[throttle_key] = time.time() + 1800
     seen_key = f"seen:{spec['path']}"
     since_key = f"since:{spec['path']}"
-    seen = set(state.get(seen_key, []))
+    seen_list = list(state.get(seen_key, []))
+    seen = set(seen_list)
     since = state.get(since_key) or time.strftime(
         "%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - 48 * 3600))
     now_iso = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
@@ -147,6 +148,7 @@ def github_events(spec, state):
                 if not sha or sha in seen:
                     continue
                 seen.add(sha)
+                seen_list.append(sha)
                 msg = (c.get("commit", {}).get("message", "")
                        .split("\n")[0])
                 author = (c.get("author") or {}).get("login") or \
@@ -155,7 +157,7 @@ def github_events(spec, state):
                               "sha": sha[:12], "author": author})
     except Exception:
         return []
-    state[seen_key] = sorted(seen)[-3000:]
+    state[seen_key] = seen_list[-3000:]
     state[since_key] = now_iso
     return fresh
 
@@ -186,9 +188,13 @@ def new_items(spec, state):
             except json.JSONDecodeError:
                 continue
         return out
-    # json_array: arquivo re-escrito; dedupe por hash de item já visto
+    # json_array: arquivo re-escrito inteiro a cada save. Dedupe pelo TEXTO
+    # extraído — hash do item inteiro re-conta a cada campo mutante (foi a
+    # inundação de 283k envelopes de 18-20/07) — e seen em ordem de
+    # inserção: sorted()[-N:] cortava por ordem LEXICOGRÁFICA e vazava.
     seen_key = f"seen:{path}"
-    seen = set(state.get(seen_key, []))
+    seen_list = list(state.get(seen_key, []))
+    seen = set(seen_list)
     try:
         data = json.load(open(path, encoding="utf-8", errors="replace"))
     except (json.JSONDecodeError, OSError):
@@ -198,12 +204,15 @@ def new_items(spec, state):
     for it in items:
         if not isinstance(it, dict):
             continue
-        h = hashlib.sha256(json.dumps(it, sort_keys=True,
-                                      ensure_ascii=False).encode()).hexdigest()
+        text = extract_text(it)
+        if not text:
+            continue
+        h = hashlib.sha256(text.encode()).hexdigest()
         if h not in seen:
             seen.add(h)
+            seen_list.append(h)
             fresh.append(it)
-    state[seen_key] = sorted(seen)[-500:]
+    state[seen_key] = seen_list[-5000:]
     return fresh
 
 

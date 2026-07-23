@@ -1,5 +1,28 @@
 # PATHOS — synt0ny
 
+## Incidente 18-23/07: a espinha ficou muda 3 dias — achado e consertado (2026-07-23)
+Três causas COMPOSTAS, descobertas na pergunta "que ponto estamos":
+(1) o daemon do m1nd clona o MESMO alert com metadados mutantes
+(daemon_alerts.json: 500 itens, 1 texto único) → nosso dedupe por hash
+do item inteiro + corte sorted()[-500:] (LEXICOGRÁFICO, não temporal)
+vazou → 283.547 envelopes duplicados em 18-20/07; (2) reboots do Mac em
+20/07 → (3) os 3 launchd jobs estavam bootstrapped ad-hoc (plists NUNCA
+instalados em ~/Library/LaunchAgents) E marcados disabled no gui/502 —
+nada voltou; silêncio total 20-23/07. Consertos, todos provados:
+dedupe do json_array agora por TEXTO extraído + seen em ordem de
+inserção FIFO (idem github); shadow.jsonl deduplicado 284.180→823
+(backup shadow.jsonl.bak-20260723.gz); seen seedado antes da religa;
+plists instalados + enabled + bootstrapped; tick de retomada colheu o
+backlog dos 3 dias (191 eventos, 1015 envelopes, painel UP, exit 0);
+bug do daemon reportado em field-reports.jsonl E colhido pela própria
+espinha no mesmo tick. Lições de arquitetura: watcher de fonte que
+REESCREVE arquivo deduplica por conteúdo semântico, nunca por item;
+sorted()[-N:] em seen-set é bug de vazamento; serviço só existe se o
+plist mora em ~/Library/LaunchAgents E está enabled. PENDÊNCIAS: selar
+janela 2 de auditoria (marco novo — o card "fase 2" do painel ainda
+conta do selo velho de 10/07); decisão dos alerts anotados (T0.1
+pleno); T1 da fronteira.
+
 ## Estratégia pós-F2 ratificada com o Max (2026-07-20)
 Sessão de leitura fria do que a F2 significa. Três camadas fixadas:
 (1) PROVADO = o instrumento sobre dados do m1nd (T0 conquistado);
