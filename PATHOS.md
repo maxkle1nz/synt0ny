@@ -191,7 +191,7 @@ o método é o produto tanto quanto os resultados.
 - Eixo da intenção zero-shot: forte no polo ⊖, morno no ⊕ (medido na CLI).
 - Escala: tudo validado em 227 verbos pt; substantivos/frases = extrapolação.
 
-- Exp 10 (a ponte, verdict fugu CHANGE aplicado): o eixo da intenção TRANSFERE
+- Exp 10 (a ponte, verdict de oráculo CHANGE aplicado): o eixo da intenção TRANSFERE
   para frases — 100% em 52 frases (AUC 1.0; null matched p95 80,8%), 14/14 em
   vocabulário nunca visto. ESPECTRÔMETRO VIÁVEL. Batismo do mostrador adiado:
   bloco adversarial 3/8 (o eixo mistura valência do evento com tipo lexical do
@@ -217,7 +217,7 @@ o método é o produto tanto quanto os resultados.
      registro/morfologia/enciclopédia ("des-", nomes próprios, jargão).
      O dicionário cru tem geometria EDITORIAL.
    · Concordância inter-encoder: Q 0,21 (baixa!) · proj(v12) 0,52 — os
-     encoders são menos redundantes que o risco fable temia; onde concordam,
+     encoders são menos redundantes que o desenho temia; onde concordam,
      vale mais.
    Trilhas futuras bancada B (registradas): SAEs sobre espectros,
    observatório noturno, qwen3:32b rotulador auxiliar validado por amostra.
